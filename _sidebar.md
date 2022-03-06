@@ -1,3 +1,3 @@
 - [📖**首页**](/README.md)
 - [**Java基础**](/Java基础/README.md)
-    - [基础数据类型与引用类型.md](/Java基础/数据类型.md)
+    - [数据类型.md](/Java基础/数据类型.md)
