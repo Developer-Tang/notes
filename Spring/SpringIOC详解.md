@@ -116,7 +116,7 @@
   }
   ```
 - **set方法**
-    ```java
+  ```java
   public class A{
     public B b;
     public setB(B b){
