@@ -1,4 +1,4 @@
-## notes
+<h1 style="color: cornflowerblue">notes</h1>
 
 笔记缓慢编写中。。。
 
