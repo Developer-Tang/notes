@@ -8,3 +8,5 @@
     - [SpringIOC详解.md](/Spring/SpringIOC详解.md)
     - [SpringAOP详解.md](/Spring/SpringAOP详解.md)
     - [SpringMVC详解.md](/Spring/SpringMVC详解.md)
+- [**MySQL**](/MySQL/README.md)
+    - [MySQL常见语法.md](/MySQL/MySQL常见语法.md)
