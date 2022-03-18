@@ -29,9 +29,7 @@ mysql> explain select * from t_user;
     - *UNION：* 联合
     - *UNION RESULT：* 使用联合的结果
 
-- **table**
-
-  > 正在访问的表名
+- **table：** 正在访问的表名
 
 - **type**
 
@@ -87,25 +85,15 @@ mysql> explain select * from t_user;
 
     - *SYSTEM：* 系统
 
-- **possible_keys**
+- **possible_keys：** 可能使用的索引
 
-  > 可能使用的索引
+- **key：** 真实使用的索引
 
-- **key**
+- **key_len：** MySQL中使用索引字节长度
 
-  > 真实使用的索引
+- **rows：** mysql估计为了找到所需的行而要读取的行数  *--只是预估值*
 
-- **key_len**
-
-  > MySQL中使用索引字节长度
-
-- **rows**
-
-  > mysql估计为了找到所需的行而要读取的行数  *--只是预估值*
-
-- **extra**
-
-  > 该列包含MySQL解决查询的详细信息
+- **extra：** 该列包含MySQL解决查询的详细信息
 
 ## 造成索引失效的原因
 
@@ -135,7 +123,7 @@ select *
 from t_user
 where nickname > 'abc';
 
--- order by，当查询字段非主键或非索引字段不走索引，如下sex就算是索引字段也不走索引
+-- order by，当查询字段非主键或非索引字段不走索引
 select id, nickname, sex
 from t_user
 order by nickname desc;
