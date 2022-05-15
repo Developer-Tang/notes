@@ -12,7 +12,9 @@
     - [MySQL常见语法.md](/MySQL/MySQL常见语法.md)
     - [MySQL索引.md](/MySQL/MySQL索引.md)
     - [MySQL常见问题.md](/MySQL/MySQL常见问题.md)
-- [**Docker**](/MySQL/README.md)
+- [**Docker**](/Docker/README.md)
     - [Docker安装教程.md](/Docker/Docker安装教程.md)
     - [Docker常见命令.md](/Docker/Docker常见命令.md)
+- [ **RabbitMQ** ](/RabbitMQ/README.md)
+    - [RabbitMQ安装教程.md](/RabbitMQ/RabbitMQ安装教程.md)
 

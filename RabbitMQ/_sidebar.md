@@ -1,0 +1,2 @@
+- [ **RabbitMQ** ](/RabbitMQ/README.md)
+    - [RabbitMQ安装教程.md](/RabbitMQ/RabbitMQ安装教程.md)
