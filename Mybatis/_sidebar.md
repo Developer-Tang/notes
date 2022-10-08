@@ -1,2 +1,2 @@
 - [📖**首页**](/README.md)
-- **Mybaits**
+- **Mybatis**
