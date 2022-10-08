@@ -12,10 +12,10 @@
 
 > Spring IOC容器的设计主要是基于BeanFactory和ApplicationContext两个接口，其中ApplicationContext是BeanFactory的子接口之一。换句话说BeanFactory是Spring IOC容器所定义的最底层接口，而ApplicationContext是其高级接口之一，并且对BeanFactory功能做了许多有用的扩展，所以在绝大部分的工作场景下，都会使用ApplicationContext作为Spring IOC容器
 
-| **容器**                            | 描述                                                         |
-| ------------------------------ | ------------------------------------------------------------ |
-| SpringBeanFactory容器 |最简单的容器，给DI提供了基本支持，它用 org.springframework.beans.factory.BeanFactory 接口来定义。BeanFactory 或者相关的接口，如 BeanFactoryAware，InitializingBean，DisposableBean，在 Spring 中仍然存在具有大量的与 Spring 整合的第三方框架的反向兼容性的目的|
-| SpringApplicationContext容器 |该容器添加了更多的企业特定的功能，例如从一个属性文件中解析文本信息的能力，发布应用程序事件给感兴趣的事件监听器的能力。该容器是由 org.springframework.context.ApplicationContext 接口定义|
+| **容器**                     | 描述                                                                                                                                                                                            |
+|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SpringBeanFactory容器        | 最简单的容器，给DI提供了基本支持，它用 org.springframework.beans.factory.BeanFactory 接口来定义。BeanFactory 或者相关的接口，如 BeanFactoryAware，InitializingBean，DisposableBean，在 Spring 中仍然存在具有大量的与 Spring 整合的第三方框架的反向兼容性的目的 |
+| SpringApplicationContext容器 | 该容器添加了更多的企业特定的功能，例如从一个属性文件中解析文本信息的能力，发布应用程序事件给感兴趣的事件监听器的能力。该容器是由 org.springframework.context.ApplicationContext 接口定义                                                                          |
 
 ### BeanFactory结构
 
@@ -66,13 +66,9 @@
 - **FileSystemXmlApplicationContext：** 默认从文件系统中装载配置文件
 - **ApplicationEventPublisher：** 让容器拥有发布应用上下文事件的功能，包括容器启动事件、关闭事件等。
 - **MessageSource：** 为应用提供i18n国际化消息访问的功能
-- **ResourcePatternResolver ：**
-  所有ApplicationContext实现类都实现了类似于PathMatchingResourcePatternResolver的功能，可以通过带前缀的Ant风格的资源文件路径装载Spring的配置文件。
-- **LifeCycle：** 该接口是Spring2.0加入的，该接口提供了start()和stop()
-  两个方法，主要用于控制异步处理过程。在具体使用时，该接口同时被ApplicationContext实现及具体Bean实现，ApplicationContext会将start/stop的信息传递给容器中所有实现了该接口的Bean，以达到管理和控制JMX、任务调度等目的
-- **ConfigurableApplicationContext：** 扩展于 ApplicationContext，它新增加了两个主要的方法：refresh()和close()
-  ，让ApplicationContext具有启动、刷新和关闭应用上下文的能力。在应用上下文关闭的情况下调用refresh()即可启动应用上下文，在已经启动的状态下，调用refresh()则清除缓存并重新装载配置信息，而调用close()
-  则可关闭应用上下文
+- **ResourcePatternResolver ：** 所有ApplicationContext实现类都实现了类似于PathMatchingResourcePatternResolver的功能，可以通过带前缀的Ant风格的资源文件路径装载Spring的配置文件。
+- **LifeCycle：** 该接口是Spring2.0加入的，该接口提供了start()和stop()两个方法，主要用于控制异步处理过程。在具体使用时，该接口同时被ApplicationContext实现及具体Bean实现，ApplicationContext会将start/stop的信息传递给容器中所有实现了该接口的Bean，以达到管理和控制JMX、任务调度等目的
+- **ConfigurableApplicationContext：** 扩展于 ApplicationContext，它新增加了两个主要的方法：refresh()和close()，让ApplicationContext具有启动、刷新和关闭应用上下文的能力。在应用上下文关闭的情况下调用refresh()即可启动应用上下文，在已经启动的状态下，调用refresh()则清除缓存并重新装载配置信息，而调用close()则可关闭应用上下文
 
 ### BeanFactory与ApplicationContext的区别
 
@@ -134,3 +130,7 @@
 - **byType：** 通过参数类型自动装配，Spring容器在配置文件中发现bean的autowire属性被设置成byType，之后容器试图匹配、装配和该bean的属性具有相同类型的bean。如果有多个bean符合条件，则抛出错误。
 - **constructor：** 这个方式类似于byType， 但是要提供给构造器参数，如果没有确定的带参数 的构造器参数类型，将会抛出异常。
 - **autodetect：** 首先尝试使用constructor来自动装配，如果无法工作，则使用byType方式。****
+
+## 其他问题
+
+### 三级缓存解决循环依赖的原理
