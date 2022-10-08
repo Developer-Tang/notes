@@ -180,7 +180,7 @@ public class DispatcherServlet extends FrameworkServlet {
                          }
                          // 获取处理器适配器
                          HandlerAdapter ha = this.getHandlerAdapter(mappedHandler.getHandler());
-                         // 下面未Last-Modified缓存机制，作用节省网络带宽、提供响应速度和用户体验
+                         // 下面为Last-Modified缓存机制，作用节省网络带宽、提供响应速度和用户体验
                          String method = request.getMethod();
                          boolean isGet = HttpMethod.GET.matches(method);
                          if (isGet || HttpMethod.HEAD.matches(method)) {
