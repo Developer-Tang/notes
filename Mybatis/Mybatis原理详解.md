@@ -76,7 +76,6 @@ mybatis:
 > 通过设置 `flushCache="true"` 可以清空该namespace下的缓存
 
 ```xml
-
 <update id="updateTableAData" flushCache="true" parameterType="xx.xx">
     update table_a set name = #{name} where id = #{id}
 </update>
