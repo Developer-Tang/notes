@@ -1,5 +1,5 @@
 - [📖**首页**](/README.md)
 - **MySQL**
-    - [MySQL常见语法.md](/MySQL/MySQL常见语法.md)
-    - [MySQL索引.md](/MySQL/MySQL索引.md)
+    - [MySQL基础语法.md](/MySQL/MySQL基础语法.md)
+    - [MySQL索引详解.md](/MySQL/MySQL索引详解.md)
     - [MySQL常见问题.md](/MySQL/MySQL常见问题.md)
