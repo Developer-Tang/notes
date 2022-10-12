@@ -34,6 +34,8 @@
 - [ **RabbitMQ** ](/RabbitMQ/README.md)
     - [RabbitMQ安装教程.md](/RabbitMQ/RabbitMQ安装教程.md)
     - [RabbitMQ工作模式.md](/RabbitMQ/RabbitMQ工作模式.md)
+- [**Nginx**](/Nginx/README.md)
+    - [ Nginx应用.md ](/Nginx/Nginx应用.md)
 - [**Docker**](/Docker/README.md)
     - [Docker安装教程.md](/Docker/Docker安装教程.md)
     - [Docker常见命令.md](/Docker/Docker常见命令.md)
