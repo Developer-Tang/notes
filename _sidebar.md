@@ -22,7 +22,7 @@
     - [SpringAOP详解.md](/Spring/SpringAOP详解.md)
     - [SpringMVC详解.md](/Spring/SpringMVC详解.md)
 - [**Mybatis**](/Mybatis/README.md)
-    - [Mybatis原理详解.md](/Mybatis/Mybatis原理详解.md)
+    - [Mybatis基础.md](/Mybatis/Mybatis基础.md)
 - [**SpringBoot**](/SpringBoot/README.md)
 - [**Dubbo**](/Dubbo/README.md)
     - [Dubbo介绍.md](/Dubbo/Dubbo介绍.md)
