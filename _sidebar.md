@@ -7,6 +7,7 @@
     - [锁.md](/Java基础/锁.md)
 - [**JVM**](/JVM/README.md)
     - [JVM内存模型.md](/JVM/JVM内存模型.md)
+    - [GC回收机制.md](/JVM/GC回收机制.md)
 - [**MySQL**](/MySQL/README.md)
     - [MySQL基础语法.md](/MySQL/MySQL基础语法.md)
     - [MySQL索引详解.md](/MySQL/MySQL索引详解.md)
