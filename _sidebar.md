@@ -29,7 +29,7 @@
 - [**SpringBoot**](/SpringBoot/README.md)
     - [SpringBoot基础.md](/SpringBoot/SpringBoot基础.md)
 - [**Dubbo**](/Dubbo/README.md)
-    - [Dubbo介绍.md](/Dubbo/Dubbo介绍.md)
+    - [Dubbo基础.md](/Dubbo/Dubbo基础.md)
 - [**Zookeeper**](/Zookeeper/README.md)
 - [**SpringCloudAlibaba**](/SpringCloudAlibaba/README.md)
 - [ **MongoDB** ](/Redis/README.md)
