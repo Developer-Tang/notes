@@ -1,6 +1,6 @@
 - [📖**首页**](/README.md)
 - **Java基础**
-  - [Java安装.md](/Java基础/Java安装.md)
+  - [JDK安装.md](/Java基础/JDK安装.md)
   - [基础知识.md](/Java基础/基础知识.md)
   - [集合框架.md](/Java基础/集合框架.md)
   - [多线程.md](/Java基础/多线程.md)

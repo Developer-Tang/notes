@@ -1,4 +1,4 @@
-## Java安装
+## JDK安装
 
 > 下载地址：[JDK](https://www.oracle.com/java/technologies/downloads/#java8)
 
