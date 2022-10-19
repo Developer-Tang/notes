@@ -49,4 +49,4 @@
     - [Docker常见命令.md](/Docker/Docker常见命令.md)
 - [ **Git** ](/Git/README.md)
     - [Git命令大全.md](/Git/Git命令大全.md)
-    - [GitHub访问慢解决方法.md](/Git/Git常见使用问题.md)
+    - [Git常见使用问题.md](/Git/Git常见使用问题.md)
