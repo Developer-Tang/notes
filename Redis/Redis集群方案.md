@@ -2,7 +2,7 @@
 
 ![Redis主从.drawio.svg](Redis集群方案/Redis主从.drawio.svg)
 
-### slaveof 命令
+### slaveof命令
 
 > - 建立主从命令： `slaveof ip port`
 > - 取消主从命令： `slaveof no one`
@@ -41,7 +41,7 @@
 > 1. 哨兵至少需要 3 个实例，来保证自己的健壮性
 > 2. 哨兵+ redis 主从的部署架构，是不保证数据零丢失的，只能保证 redis 集群的高可用性
 
-## Redis Cluster 方案
+## Redis Cluster方案
 
 ![RedisCluster集群结构.drawio.svg](Redis集群方案/RedisCluster集群结构.drawio.svg)
 

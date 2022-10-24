@@ -1,10 +1,10 @@
-## 什么时 Mybatis 
+## 什么时Mybatis 
 
 > 1. Mybatis 是一个半 ORM (对象关系映射)的框架，内部通过对 JDBC 的封装实现。减少了开发过程中花费大量精力去加载驱动、创建连接、创建 statement 等繁杂的操作，只需要关注 SQL 语句本身
 > 2. Mybatis 可以通过 XML 或注解来配置和映射原生信息，将 Entity 映射成数据库中的记录，避免了绝大部分 JDBC 代码、手动设置参数以及手动封装结果集
 > 3. 通过XML文件或注解的方式将要执行的各种 statement 配置起来，并通过 Java 对象和 statement 中的 sql 的动态参数进行映射生成最终的 sql 语句，最后由 mybatis 框架执行 sql 并将结果映射为 java 对象返回
 
-## MyBatis 的工作原理
+## MyBatis的工作原理
 
 ![Mybatis工作原理.drawio.svg](Mybatis基础/Mybatis工作原理.drawio.svg)
 
@@ -17,7 +17,7 @@
 > 7. **输入参数映射：** 输入参数类型可以是 Map 、 List 等集合类型，也可以是基本数据类型和 POJO 类型。输入参数映射过程类似于 JDBC 对 preparedStatement 对象设置参数的过程
 > 8. **输出结果映射：** 输出结果类型可以是 Map 、 List 等集合类型，也可以是基本数据类型和 POJO 类型。输出结果映射过程类似于 JDBC 对结果集的解析过程
 
-## Mybatis 的优缺点
+## Mybatis的优缺点
 
 ### 优点
 
@@ -33,7 +33,7 @@
 > 1. SQL 语句编写工作量较大，数据量大时对开发人员的 SQL 功底有一定的要求
 > 2. SQL 依赖于数据库，导致数据库移植性差，不能随意更换、调整数据库
 
-## #{} 与 ${} 的区别
+## #{}与${}的区别
 
 > - `#{}` 为预编译处理，Mybatis 在处理 `#{}` 时会将 sql 中的 `#{}` 替换为 `?` ，调用 PreparedStatement 的 set 方法进行赋值
 > - `${}` 为字符串拼接，Mybatis 处理 `${}` 时会将 sql 中的 `${}` 直接替换成对应的值
@@ -44,9 +44,9 @@
 > 1. 通过在 sql 中设置别名返回与实体属性名对应的别名
 > 2. 通过 `<resultMap>` 设置实体属性名与表字段的映射关系
 
-## like 模糊查询怎么写
+## like模糊查询怎么写
 
-### Java 代码中拼接
+### Java代码中拼接
 
 > java 代码中完成通配符添加， sql 中通过 `#{}` 注入
 
@@ -62,7 +62,7 @@ List<Table> tables = mapper.qryList(likeStr);
 </select>
 ```
 
-### SQL 拼接
+### SQL拼接
 
 > sql 中直接拼接通配符，可能造成 sql 注入问题
 
@@ -72,7 +72,7 @@ List<Table> tables = mapper.qryList(likeStr);
 </select>
 ```
 
-### SQL 拼接函数
+### 函数拼接SQL
 
 > sql 中调用拼接函数拼接通配符，可以避免出现 sql 注入问题
 
@@ -82,7 +82,7 @@ List<Table> tables = mapper.qryList(likeStr);
 </select>
 ```
 
-## mapper 中如何传递多个参数？
+## mapper中如何传递多个参数？
 
 ### 通过参数索引位
 
@@ -112,15 +112,15 @@ User findUser(@Param("age") Integer age,@Param("sex") Integer sex);
 </select>
 ```
 
-## Mapper 接口的工作原理
+## Mapper接口的工作原理
 
 > Mapper 接口没有实现类，当调用接口时通过全限名(例： com.xxxx.user.mapper.UserMapper ) + 方法名拼接字符串作为Key值(例： com.xxxx.user.mapper.UserMapper.findUserByName )，可唯一定位一个 MapperStatement 。在 xml 中的每一个 `<select>` 、 `<insert>` 、 `<update>` 、 `<delete>` 标签都会被解析成一个 MapperStatement 对象。 Mapper 接口采用 JDK 动态代理， Mybatis 在运行时生成代理对象 proxy ，代理对象会拦截接口方法，转而执行 MapperStatement 所代表的 sql ，然后将 sql 执行结果封装放回
 
-## Mapper 接口可以重载吗？
+## Mapper接口可以重载吗？
 
 > Mapper接口中的方法不能进行重载，因为采用 **全限名 + 方法名** 的保存和寻找策略。
 
-## Mybatis 动态 SQL 有什么用
+## Mybatis动态 SQL 有什么用
 
 > 根据标签中表达式的值，完成逻辑判断并动态拼接 sql 的功能，提高了单个接口的重用性
 
@@ -196,7 +196,7 @@ User findUser(@Param("age") Integer age,@Param("sex") Integer sex);
 </resultMap>
 ```
 
-## Mybatis 缓存
+## Mybatis缓存
 
 > Mybatis 中有一级缓存和二级缓存，默认情况下一级缓存是开启的，而且是不能关闭的。一级缓存是指 SqlSession 级别的缓存，当在同一个 SqlSession 中进行相同的 SQL 语句查询时，第二次以后的查询不会从数据库查询，而是直接从缓存中获取，一级缓存最多缓存 `1024` 条 SQL 。二级缓存是指可以跨 SqlSession 的缓存。是 mapper 级别的缓存，对于 mapper 级别的缓存不同的 sqlsession 是可以共享的
 
@@ -241,7 +241,7 @@ mybatis:
     cache-enabled: true
 ```
 
-#### 在 Mapper 映射文件中配置 cache 节点
+#### 在Mapper映射文件中配置cache节点
 
 ```xml
 <!-- 开启本 mapper 所在 namespace 的二级缓存 -->
@@ -258,7 +258,7 @@ mybatis:
 > - `size:` 缓存最大占用空间
 > - `readOnly:` 只读
 
-#### SQL 禁用二级缓存与清空二级缓存配置
+#### SQL禁用二级缓存与清空二级缓存配置
 
 ##### 禁用二级缓存
 
