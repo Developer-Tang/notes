@@ -125,11 +125,11 @@
 
 ### Bean自动装配类型
 
-- **no：** 默认的方式是不进行自动装配，通过显式设置ref属性来进行装配。
-- **byName：** 通过参数名自动装配，Spring容器在配置文件中发现bean的autowire属性被设置成byName，之后容器试图匹配、装配和该bean的属性具有相同名字的bean。
-- **byType：** 通过参数类型自动装配，Spring容器在配置文件中发现bean的autowire属性被设置成byType，之后容器试图匹配、装配和该bean的属性具有相同类型的bean。如果有多个bean符合条件，则抛出错误。
-- **constructor：** 这个方式类似于byType， 但是要提供给构造器参数，如果没有确定的带参数 的构造器参数类型，将会抛出异常。
-- **autodetect：** 首先尝试使用constructor来自动装配，如果无法工作，则使用byType方式。****
+- **no：** 默认的方式是不进行自动装配，通过显式设置ref属性来进行装配
+- **byName：** 通过参数名自动装配，Spring容器在配置文件中发现bean的autowire属性被设置成byName，之后容器试图匹配、装配和该bean的属性具有相同名字的bean
+- **byType：** 通过参数类型自动装配，Spring容器在配置文件中发现bean的autowire属性被设置成byType，之后容器试图匹配、装配和该bean的属性具有相同类型的bean。如果有多个bean符合条件，则抛出错误
+- **constructor：** 这个方式类似于byType， 但是要提供给构造器参数，如果没有确定的带参数 的构造器参数类型，将会抛出异常
+- **autodetect：** 首先尝试使用constructor来自动装配，如果无法工作，则使用byType方式
 
 ## 其他问题
 

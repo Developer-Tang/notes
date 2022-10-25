@@ -147,9 +147,9 @@ public interface HttpMessageConverter<T> {
 1. 客户端请求提交到DispatchServlet(前端控制器)
 2. DispatchServlet查询HandlerMapping(处理器映射器)，找到对应的handler(处理器)
 3. DispatchServlet调用拦截器前置处理preHandle方法
-4. DispatchServlet通过HandlerAdapter(处理器适配器)调用对应的Handler
+4. DispatchServlet通过HandlerAdapter(处理器适配器)执行对应的Handler逻辑
 5. DispatchServlet调用拦截器后置处理postHandle方法
-6. 执行Handler逻辑，返回ModelAndView(模型数据和视图)至DispatchServlet
+6. 返回ModelAndView(模型数据和视图)至DispatchServlet
 7. DispatchServlet将ModelAndView传给ViewResolver(视图解析器)
 8. ViewResolver解析后返回对应的View(视图)
 9. DispatchServlet将Model(模型数据)渲染至View中

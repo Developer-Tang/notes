@@ -128,7 +128,7 @@ select id, nickname, sex
 from t_user
 order by nickname desc;
 
--- 组合索引最左原则，假设(nickname,sex,addr)为组合索引，但遇到nickname是才总组合索引，且后面必须按照建立组合索引是的顺序，可以没有但不能间隔、乱序
+-- 组合索引最左原则，假设(nickname,sex,addr)为组合索引，但遇到nickname是才会走组合索引，且后面必须按照建立组合索引是的顺序，可以没有但不能间隔、乱序
 where nickname="" and sex=0 and addr=""	#走索引
 where nickname=""						#走索引
 where nickname="" and addr="" and sex=0	#不走索引

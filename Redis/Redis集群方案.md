@@ -27,7 +27,7 @@
 
 ![Sentinel哨兵模式结构.drawio.svg](Redis集群方案/Sentinel哨兵模式结构.drawio.svg)
 
-> sentinel ，中文名是哨兵。哨兵是 redis 集群机构中非常重要的一个组件，主要有以下功能：
+> sentinel ，中文名是哨兵。哨兵是 redis 集群结构中非常重要的一个组件，主要有以下功能：
 > - 集群监控：负责监控 redis master 和 slave 进程是否正常工作。
 > - 消息通知：如果某个 redis 实例有故障，那么哨兵负责发送消息作为报警通知给管理员。
 > - 故障转移：如果 master node 挂掉了，会自动转移到 slave node 上。
