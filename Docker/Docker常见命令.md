@@ -112,6 +112,7 @@ docker run [options] image
 #   --link=[]: 添加链接到另一个容器
 #   --expose=[]: 开放一个端口或一组端口
 #   --volume , -v: 绑定一个卷
+#   --restart=always: 表示容器退出时，docker会总是自动重启这个容器
 # 例：
 # docker run -itd -p 6379:6379 redis
 ```
