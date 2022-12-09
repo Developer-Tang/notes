@@ -7,8 +7,20 @@
     <meta name="description" content="Description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- docsfiy基础样式 -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css">
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css"> -->
+
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs@1/themes/prism.css">
+
+    <script>
+        const _hmt = _hmt || [];
+        (function () {
+            const hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?03ad54de246bef73bb399c8aea7d3c9b";
+            const s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body>
 <div id="app">静态资源加载中，请稍作等待。。。</div>
@@ -19,10 +31,13 @@
         repo: 'https://gitee.com/Developer-Tang/notes', // 仓库地址
         maxLevel: 0, // 文章标题转目录层级
         subMaxLevel: 4, //
+        coverpage: true, // 开启封面
         auto2top: true, // 切换文章后自动置顶
         loadNavbar: true, // 设置导航栏
         loadSidebar: true, // 设置侧边栏
         topMargin: 5, // 定位标题与顶部的距离
+        // themeColor: '#3fb55c', // 主题色
+        notFoundPage: '_404.md',
         alias: { //避免不必要的回退过程
             '/.*/_navbar.md': '/_navbar.md',
             '/(.*)/.*/_sidebar.md': '/$1/_sidebar.md',
@@ -58,6 +73,7 @@
         }
     }
 </script>
+
 <!-- 基础JS -->
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 <!-- 表情 -->
