@@ -1,4 +1,4 @@
-<h1 style="color: cornflowerblue">ActiveMQ</h1>
+# ActiveMQ
 
 ## 什么是ActiveMQ
 

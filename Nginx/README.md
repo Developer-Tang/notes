@@ -1,1 +1,1 @@
-<h1 style="color: cornflowerblue">Nginx</h1>
+# Nginx

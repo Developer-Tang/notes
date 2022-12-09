@@ -1,4 +1,4 @@
-<h1 style="color: cornflowerblue">SpringBoot</h1>
+# SpringBoot
 
 ## 什么是SpringBoot
 

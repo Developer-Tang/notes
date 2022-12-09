@@ -1,4 +1,4 @@
-<h1 style="color: cornflowerblue">Java</h1>
+# Java
 
 ## 简介
 
