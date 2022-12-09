@@ -35,7 +35,7 @@
         auto2top: true, // 切换文章后自动置顶
         loadNavbar: true, // 设置导航栏
         loadSidebar: true, // 设置侧边栏
-        topMargin: 5, // 定位标题与顶部的距离
+        // topMargin: 5, // 定位标题与顶部的距离
         // themeColor: '#3fb55c', // 主题色
         notFoundPage: '_404.md',
         alias: { //避免不必要的回退过程
@@ -75,6 +75,8 @@
 </script>
 <!-- 基础JS -->
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+<!-- docsify-tabs -->
+<script src="//cdn.jsdelivr.net/npm/docsify-tabs"></script>
 <!-- 表情 -->
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
 <!-- 图片缩放 -->
@@ -84,7 +86,7 @@
 <!-- 字数统计插件 -->
 <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
 <!-- 文档搜索 -->
-<script src="//cdn.bootcdn.net/ajax/libs/docsify/4.12.2/plugins/search.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 <!-- 代码高亮 -->
 <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-basic.min.js"></script>
@@ -118,4 +120,19 @@
 <!-- Import 鼠标点击样式 -->
 <script src="checkLove.js"></script>
 </body>
+<style>
+    .markdown-section {
+        max-width: 90%;
+    }
+
+    .section-link {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .docsify-tabs__content {
+        padding: 20px 10px !important;
+    }
+</style>
 </html>
