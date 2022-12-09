@@ -131,8 +131,27 @@
         text-overflow: ellipsis;
     }
 
-    .docsify-tabs__content {
-        padding: 20px 10px !important;
+    .sidebar-toggle {
+        width: 19em;
+        background-color: aqua;
     }
+
+    body.close .sidebar-toggle {
+        width: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+        body.close .sidebar-toggle {
+            width: 19em;
+        }
+
+        .sidebar-toggle {
+            background-color: transparent;
+            width: auto;
+            padding: 10px;
+        }
+    }
+
+
 </style>
 </html>
