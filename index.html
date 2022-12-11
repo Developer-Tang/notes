@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>📒Tang的笔记</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- docsify基础样式 -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css">
-    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css"> -->
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css"> -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs@1/themes/prism.css">
 
@@ -58,8 +58,14 @@
         },
         lastModified: { // 文档更新时间配置
             basePath: '/',
+            preString: '上次修改时间：',
             repo: 'Developer-Tang/notes',
             dateFormat: '{YYYY}-{MM}-{DD} {HH}:{mm}'
+        },
+        copyCode: {
+            buttonText: "复制",
+            errorText: "失败",
+            successText: "成功"
         },
         markdown: {
             renderer: {
@@ -78,7 +84,7 @@
 <!-- 基础JS -->
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 <!-- docsify-tabs -->
-<script src="//cdn.jsdelivr.net/npm/docsify-tabs"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-tabs/dist/docsify-tabs.min.js"></script>
 <!-- 表情 -->
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
 <!-- 图片缩放 -->
@@ -154,7 +160,5 @@
             padding: 10px;
         }
     }
-
-
 </style>
 </html>
