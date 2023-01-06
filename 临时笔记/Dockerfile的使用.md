@@ -1,6 +1,6 @@
 ## 简介
 
-Dockerfile 文件是用于构建 Docker 镜像的配置文件，定义文件规范文件名 `Dockerfile` 没有文件后缀
+> Dockerfile 文件是用于构建 Docker 镜像的配置文件，定义文件规范文件名 `Dockerfile` 没有文件后缀
 
 ## 内容格式
 
@@ -31,7 +31,7 @@ CMD: [ "command","-?","${varName}","...." ]
 
 ### Alpine+JDK8
 
-搭建较小的JDK运行环境
+> 搭建较小的JDK运行环境
 
 ```dockerfile
 FROM alpine
@@ -44,4 +44,4 @@ RUN  rm -rf /tmp/* /var/cache/apk/*
 WORKDIR /opt
 ```
 
-也可以在构建镜像的过程中加入 jar 包，在文件后面追加 java 启动命令就可以容器创建运行时，自动启动 java 项目
+> 也可以在构建镜像的过程中加入 jar 包，在文件后面追加 java 启动命令就可以容器创建运行时，自动启动 java 项目
