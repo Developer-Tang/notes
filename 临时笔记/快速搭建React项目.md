@@ -15,11 +15,11 @@ npx create-react-app react-antd-app --template typescript
 ```text
 ├─ /node_modules
 ├─ /public
-|  ├─ favicon.ico
-|  └─ index.html
+│  ├─ favicon.ico
+│  └─ index.html
 ├─ /src
-|  ├─ App.tsx
-|  └─ index.tsx
+│  ├─ App.tsx
+│  └─ index.tsx
 ├─ .gitignore
 ├─ package.json
 ├─ README.md

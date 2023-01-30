@@ -5,14 +5,16 @@
 ![微信二维码](微信二维码.jpg "请用微信扫一扫")
 
 
+<!-- 解决Gitee挂件中emoji渲染问题 -->
+<meta name="referrer" content="no-referrer"/>
 <script src='https://gitee.com/Developer-Tang/notes/widget_preview' async defer></script>
 <div id="osc-gitee-widget-tag"></div>
 <style>
-#osc-gitee-widget-tag{padding-top: 5em} 
-.osc_pro_color {color: #4183c4 !important;}
-.osc_panel_color {background-color: #ffffff !important;}
-.osc_background_color {background-color: #ffffff !important;}
-.osc_border_color {border-color: #e3e9ed !important;}
-.osc_desc_color {color: #666666 !important;}
-.osc_link_color * {color: #9b9b9b !important;}
+    #osc-gitee-widget-tag{padding-top: 5em}
+    .osc_pro_color {color: #4183c4 !important;}
+    .osc_panel_color {background-color: #ffffff !important;}
+    .osc_background_color {background-color: #ffffff !important;}
+    .osc_border_color {border-color: #e3e9ed !important;}
+    .osc_desc_color {color: #666666 !important;}
+    .osc_link_color * {color: #9b9b9b !important;}
 </style>
