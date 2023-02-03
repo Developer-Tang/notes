@@ -5,4 +5,4 @@
     - [ThreeJS的的使用.md](/临时笔记/ThreeJS的的使用.md)
     - [快速搭建React项目.md](/临时笔记/快速搭建React项目.md)
     - [Dockerfile的使用.md](/临时笔记/Dockerfile的使用.md)
-    - [MybatisPlus多租户插件详解.md](/临时笔记/MybatisPlus多租户插件详解.md)
+    - [MybatisPlus多租户插件.md](/临时笔记/MybatisPlus多租户插件.md)

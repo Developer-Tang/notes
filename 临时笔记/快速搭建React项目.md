@@ -45,15 +45,15 @@ npx create-react-app react-antd-app --template typescript
 
 > 修改 `App.tsx` 文件
 
-```typescript
+```ts
 import React from 'react'
 
 const App: React.FC = () => {
-  return (
-    <p>
-      Edit < code > src / App.tsx < /code> and save to reload.
-    < /p>
-  )
+    return (
+        <p>
+            Edit < code > src / App.tsx < /code> and save to reload.
+        < /p>
+    )
 }
 
 export default App
@@ -61,19 +61,19 @@ export default App
 
 > 修改 `index.tsx` 文件
 
-```typescript
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+```tsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+    document.getElementById('root') as HTMLElement
+)
 root.render(
-  <React.StrictMode>
-    <App / >
-  </React.StrictMode>
-);
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+)
 ```
 
 ### Webpack配置
@@ -108,17 +108,17 @@ yarn add less less-loader --dev
 
 > 修改 `config/webpack.config.js`
 
-```typescript
+```ts
 // 开头添加
 const lessRegex = /\.less$/
 const lessModuleRegex = /\.module\.less$/
 module.exports = function (webpackEnv) {
-  return {
-    resolve: {
-      module: {
-        rules: [ {
-          oneOf: [
-            // 前面都是其他配置，从这里开始为要新增的配置
+    return {
+        resolve: {
+            module: {
+                rules: [ {
+                    oneOf: [
+                        // 前面都是其他配置，从这里开始为要新增的配置
             {
               test: lessRegex,
               exclude: lessModuleRegex,
@@ -160,15 +160,15 @@ module.exports = function (webpackEnv) {
 
 > 修改 `config/webpack.config.js`
 
-```typescript
+```js
 module.exports = function (webpackEnv) {
-  return (
-    resolve: {
-      alias: {
-        '@': path.join(__dirname '..', 'src'),
-      }
-    }
-  )
+    return (
+        resolve: {
+            alias: {
+                '@': path.join(__dirname'..', 'src'),
+            }
+        }
+    )
 }
 ```
 
