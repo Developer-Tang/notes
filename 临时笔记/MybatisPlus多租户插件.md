@@ -1,4 +1,4 @@
-?> [官方文档](https://baomidou.com/pages/aef2f2/)
+!> [官方文档](https://baomidou.com/pages/aef2f2/)
 
 ## 多租户插件原理
 

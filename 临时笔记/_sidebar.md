@@ -6,3 +6,4 @@
     - [快速搭建React项目.md](/临时笔记/快速搭建React项目.md)
     - [Dockerfile的使用.md](/临时笔记/Dockerfile的使用.md)
     - [MybatisPlus多租户插件.md](/临时笔记/MybatisPlus多租户插件.md)
+    - [Bat脚本发布项目.md](/临时笔记/Bat脚本发布项目.md)
