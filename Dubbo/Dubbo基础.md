@@ -75,8 +75,8 @@
 > - **Webservice：** 基于WebService的远程调用协议，集成CXF实现，提供和原生WebService的互操作。多个短连接，基于HTTP传输，同步传输，适用系统集成和跨语言调用
 > - **Http：** 基于Http表单提交的远程调用协议，使用Spring的HttpInvoke实现。多个短连接，传输协议HTTP，传入参数大小混合，提供者个数多于消费者，需要给应用程序和浏览器JS调用
 > - **Hessian：** 集成Hessian服务，基于HTTP通讯，采用Servlet暴露服务，Dubbo内嵌Jetty作为服务器时默认实现，提供与Hession服务互操作。多个短连接，同步HTTP传输，Hessian二进制序列化，传入参数较大，提供者大于消费者，提供者压力较大，可传文件
-> - **Thrif：** Thrift是Facebook捐给Apache的一个RPC框架，当前dubbo支持的thrift协议是对thrift原生协议的扩展，在原生协议的基础上添加了一些额外的头信息，比如service name，magic number等
-> - **Memcache：** 基于memcached实现的RPC协议
+> - **Thrift：** Thrift是Facebook捐给Apache的一个RPC框架，当前dubbo支持的thrift协议是对thrift原生协议的扩展，在原生协议的基础上添加了一些额外的头信息，比如service name，magic number等
+> - **Memcached：** 基于memcached实现的RPC协议
 > - **Redis：** 基于redis实现的RPC协议
 
 ## Dubbo支持的注册中心
