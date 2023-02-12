@@ -3,7 +3,7 @@
 ### 通过create-react-app创建
 
 ```shell
-npx create-react-app react-antd-app --template typescript
+npx create-react-app projectName --template typescript
 ```
 
 !> `--template` 指定了 js 类型为 typescript 如果不想用 ts 也可以不加
