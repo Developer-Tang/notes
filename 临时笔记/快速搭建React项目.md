@@ -1,174 +1,226 @@
-## 从零搭建React项目
+## 项目初始化
 
-### 通过create-react-app创建
+> react-antd-app 为自定义项目名，按需修改
 
 ```shell
-npx create-react-app projectName --template typescript
+mkdir react-antd-app
+cd react-antd-app
+yarn init -y
 ```
 
-!> `--template` 指定了 js 类型为 typescript 如果不想用 ts 也可以不加
+> 根目录添加文件 `.gitignore`
 
-### 修改基础文件
-
-> 打开项目路径，删除用不到的文件，保留基础文件即可
-
-```text
-├─ /node_modules
-├─ /public
-│  ├─ favicon.ico
-│  └─ index.html
-├─ /src
-│  ├─ App.tsx
-│  └─ index.tsx
-├─ .gitignore
-├─ package.json
-├─ README.md
+```ignore
+.idea
+.vscode
+node_modules
+dist
+yarn.lock
+package_lock.json
 ```
 
-> 修改 `index.html` 文件
+> 初始化 Git 仓库
+
+```shell
+git init
+git add .
+git commit -m "project init"
+```
+
+## 安装相关依赖
+
+```shell
+yarn add react react-dom
+yarn add -D @types/react @types/react-dom
+yarn add -D css-loader mini-css-extract-plugin less less-loader
+yarn add -D babel-loader
+yarn add -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread
+yarn add -D webpack webpack-cli webpack-dev-server html-webpack-plugin webpackbar
+```
+
+## webpack配置
+
+> 根目录创建文件 `webpack.config.js`
+
+```js
+const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const WebpackBar = require('webpackbar')
+const path = require('path')
+module.exports = {
+    mode: 'development',
+    entry: {
+        main: resolve(__dirname, 'src', 'index.tsx')
+    },
+    output: {
+        filename: 'index.js',
+        path: resolve(__dirname, 'dist')
+    },
+    resolve: {
+        // webpack 默认只处理js、jsx等js代码
+        // 为了防止在import其他ts代码的时候，出现
+        // " Can't resolve 'xxx' "的错误，需要特别配置
+        extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
+        alias: {
+            '@': path.join(__dirname, './src/')
+        }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.tsx?/,
+                use: [
+                    'babel-loader'
+                ],
+                exclude: /node_moudles/
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'less-loader'
+                ]
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: resolve(__dirname, 'public', 'index.html'),
+            filename: 'index.html',
+            inject: 'body'
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'app.css'
+        }),
+        new WebpackBar({
+            // color: "#85d", // 默认green，进度条颜色支持HEX
+            basic: false, // 默认true，启用一个简单的日志报告器
+            profile: false // 默认false，启用探查器。
+        })
+    ],
+    devServer: {
+        port: process.env.REACT_APP_PROT ?? 80
+    }
+}
+```
+
+## babel配置
+
+> 根目录创建文件 `.babelrc`
+
+```json
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-typescript",
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties"
+  ]
+}
+```
+
+## ts配置
+
+> 根目录创建文件 `tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true
+  },
+  "paths": {
+    "@/*": [
+      "./src/*"
+    ]
+  }
+}
+```
+
+## 页面配置
+
+> 创建文件 `public/index.html`
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>React App</title>
+    <meta charset="UTF-8">
+    <title>ReactApp</title>
 </head>
 <body>
-<noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
 </body>
 </html>
 ```
 
-> 修改 `App.tsx` 文件
+> 创建文件 `src/global.d.ts`，用于类型定义
 
 ```ts
-import React from 'react'
-
-const App: React.FC = () => {
-    return (
-        <p>
-            Edit < code > src / App.tsx < /code> and save to reload.
-        < /p>
-    )
+declare module '*.module.less' {
+    const content: {
+        [className: string]: any
+    }
+    export default content
 }
-
-export default App
 ```
 
-> 修改 `index.tsx` 文件
+> 创建文件 `src/index.tsx`
 
 ```tsx
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import styles from '@/index.module.less'
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 )
 root.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
+    <div className={styles.app}>Hello, <span>App</span></div>
 )
 ```
 
-### Webpack配置
+> 创建文件 `src/index.module.less`
 
-> `.gitignore` 文件添加忽略项
+```less
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
 
-```gitignore
-yarn.lock
-package-lock.json
-```
+div {
+  box-sizing: border-box;
+}
 
-> 项目文件提交git
+.app {
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
 
-```shell
-git add .
-git commit -m '提交说明'
-```
-
-> 执行 eject
-
-```shell
-yarn eject
-```
-
-### 集成Less
-
-> 执行
-
-```shell
-yarn add less less-loader --dev
-```
-
-> 修改 `config/webpack.config.js`
-
-```ts
-// 开头添加
-const lessRegex = /\.less$/
-const lessModuleRegex = /\.module\.less$/
-module.exports = function (webpackEnv) {
-    return {
-        resolve: {
-            module: {
-                rules: [ {
-                    oneOf: [
-                        // 前面都是其他配置，从这里开始为要新增的配置
-            {
-              test: lessRegex,
-              exclude: lessModuleRegex,
-              use: getStyleLoaders(
-                {
-                  importLoaders: 3,
-                  sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
-                  modules: {
-                    mode: 'icss'
-                  }
-                },
-                'less-loader'
-              ),
-              sideEffects: true
-            }, {
-              test: lessModuleRegex,
-              use: getStyleLoaders(
-                {
-                  importLoaders: 3,
-                  sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
-                  modules: {
-                    mode: 'local',
-                    getLocalIdent: getCSSModuleLocalIdent
-                  }
-                },
-                'less-loader'
-              )
-            }
-            // 新增配置到这里结束，将中间内容复制粘贴到 oneOf 数组中就行了
-          ]
-        } ]
-      }
-    }
+  span {
+    color: rgb(0, 111, 222);
+    font-size: 24px;
   }
 }
 ```
-
-#### 设置路径别名
-
-> 修改 `config/webpack.config.js`
-
-```js
-module.exports = function (webpackEnv) {
-    return (
-        resolve: {
-            alias: {
-                '@': path.join(__dirname'..', 'src'),
-            }
-        }
-    )
-}
-```
-
