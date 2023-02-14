@@ -11,12 +11,15 @@ yarn init -y
 > 根目录添加文件 `.gitignore`
 
 ```ignore
-.idea
-.vscode
-node_modules
-dist
+.idea/
+.vscode/
+node_modules/
+dist/
+build/
+
 yarn.lock
 package_lock.json
+*.log
 ```
 
 > 初始化 Git 仓库
@@ -30,12 +33,14 @@ git commit -m "project init"
 ## 安装相关依赖
 
 ```shell
-yarn add react react-dom
+yarn add react react-dom react-scripts
 yarn add -D @types/react @types/react-dom
 yarn add -D css-loader mini-css-extract-plugin less less-loader
 yarn add -D babel-loader
 yarn add -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread
 yarn add -D webpack webpack-cli webpack-dev-server html-webpack-plugin webpackbar
+# .env环境变量支持
+yarn add -D dotenv-cli dotenv-webpack
 ```
 
 ## webpack配置
@@ -47,6 +52,7 @@ const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar = require('webpackbar')
+const Dotenv = require('dotenv-webpack')
 const path = require('path')
 module.exports = {
     mode: 'development',
@@ -101,6 +107,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'app.css'
         }),
+        new Dotenv({
+            path: path.resolve(__dirname, `.env.${process.env.REACT_APP_ENV}`)
+        }),
         new WebpackBar({
             // color: "#85d", // 默认green，进度条颜色支持HEX
             basic: false, // 默认true，启用一个简单的日志报告器
@@ -108,7 +117,7 @@ module.exports = {
         })
     ],
     devServer: {
-        port: process.env.REACT_APP_PROT ?? 80
+        port: process.env.REACT_APP_PORT ?? 80
     }
 }
 ```
@@ -223,4 +232,40 @@ div {
     font-size: 24px;
   }
 }
+```
+
+## 启动脚本配置
+
+> 编辑文件 `package.json`，新增 scripts 配置
+
+```json
+{
+  "scripts": {
+    "dev": "dotenv -e .env.dev webpack-dev-server --config webpack.config.js",
+    "build": "dotenv -e .env.prod webpack"
+  }
+}
+```
+
+> .env.* 配置根据自身需求而定，变量名也是不固定的，按需调整
+
+```text
+# xxx环境配置
+REACT_APP_ENV='dev'
+
+# 配置端口
+# REACT_APP_PORT=8001
+
+# 配置请求接口
+# REACT_APP_API=http://127.0.0.1:8080/
+```
+
+## 引入Antd
+
+> 执行如下命令
+
+```shell
+yarn add antd @ant-design/icons
+# 如果不用 Antd Pro 则下列不需要执行
+yarn add @ant-design/pro-components
 ```
