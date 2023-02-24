@@ -78,6 +78,7 @@ body {
 }
 
 img {
+    user-select: none;
     max-width: 100%
 }
 
@@ -103,6 +104,7 @@ li input[type=checkbox] {
 }
 
 .app-nav {
+    user-select: none;
     margin: 25px 60px 0 0;
     position: absolute;
     right: 0;
@@ -183,7 +185,8 @@ li input[type=checkbox] {
     display: block;
     font-size: inherit;
     margin: 0;
-    padding: 0
+    padding: 0;
+    width: 100%;
 }
 
 .app-nav li ul a.active {
@@ -242,6 +245,7 @@ main.hidden {
 }
 
 .sidebar {
+    user-select: none;
     border-right: 1px solid rgba(0, 0, 0, .07);
     overflow-y: auto;
     padding: 40px 0 0;
