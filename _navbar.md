@@ -3,7 +3,7 @@
 - <a>**📃目录**</a>
   - [**设计模式**](/设计模式/README.md)
   - [**计算机网络**](/计算机网络/README.md)
-  - [**Java基础**](/Java基础/README.md)
+  - [**JavaSE**](/JavaSE/README.md)
   - [**JVM**](/JVM/README.md)
   - [**MySQL**](/MySQL/README.md)
   - [**Redis**](/Redis/README.md)

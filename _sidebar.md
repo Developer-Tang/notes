@@ -5,15 +5,15 @@
     - [23种设计模式详解及应用.md](/设计模式/23种设计模式详解及应用.md)
 
 - [**计算机网络**](/计算机网络/README.md)
-  - [TCP详解.md](/计算机网络/TCP详解.md)
-  - [RPC详解.md](/计算机网络/RPC详解.md)
+    - [TCP详解.md](/计算机网络/TCP详解.md)
+    - [RPC详解.md](/计算机网络/RPC详解.md)
 
-- [**Java基础**](/Java基础/README.md)
-    - [JDK安装.md](/Java基础/JDK安装.md)
-    - [基础知识.md](/Java基础/基础知识.md)
-    - [集合框架.md](/Java基础/集合框架.md)
-    - [多线程.md](/Java基础/多线程.md)
-    - [锁.md](/Java基础/锁.md)
+- [**JavaSE**](/JavaSE/README.md)
+    - [JDK安装.md](/JavaSE/JDK安装.md)
+    - [基础知识.md](/JavaSE/基础知识.md)
+    - [集合框架.md](/JavaSE/集合框架.md)
+    - [多线程.md](/JavaSE/多线程.md)
+    - [锁.md](/JavaSE/锁.md)
 
 - [**JVM**](/JVM/README.md)
     - [JVM内存模型.md](/JVM/JVM内存模型.md)
