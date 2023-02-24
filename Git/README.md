@@ -1,1 +1,1 @@
-# Git
+# Git <!-- {docsify-ignore-all} -->

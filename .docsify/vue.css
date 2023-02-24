@@ -276,6 +276,7 @@ main.hidden {
     padding-bottom: 40px
 }
 
+
 .sidebar li.collapse .app-sub-sidebar {
     display: none
 }
@@ -714,6 +715,10 @@ section.cover blockquote > p > a:hover {
     color: #42b983;
     color: var(--theme-color, #42b983);
     font-weight: 600
+}
+
+.app-sub-sidebar .section-link {
+    color: #999;
 }
 
 .app-sub-sidebar li:before {

@@ -1,1 +1,1 @@
-## MySQL
+## MySQL <!-- {docsify-ignore-all} -->

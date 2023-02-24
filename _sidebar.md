@@ -42,8 +42,6 @@
 - [**Mybatis**](/Mybatis/README.md)
     - [Mybatis基础.md](/Mybatis/Mybatis基础.md)
 
-- [**MybatisPlus**](/MybatisPlus/README.md)
-
 - [**Dubbo**](/Dubbo/README.md)
     - [Dubbo基础.md](/Dubbo/Dubbo基础.md)
 
@@ -64,8 +62,6 @@
 - [**Git**](/Git/README.md)
     - [Git命令大全.md](/Git/Git命令大全.md)
     - [Git常见使用问题.md](/Git/Git常见使用问题.md)
-
-- [**前端**](/前端/README.md)
 
 - [**临时笔记**](/临时笔记/README.md)
 
