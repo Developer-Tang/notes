@@ -715,7 +715,7 @@ section.cover blockquote > p > a:hover {
 }
 
 .sidebar ul li.active > a {
-    border-right: 2px solid;
+    border-right: 3px solid;
     color: #42b983;
     color: var(--theme-color, #42b983);
     font-weight: 600
