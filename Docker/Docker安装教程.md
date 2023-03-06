@@ -52,7 +52,7 @@ PS C:\Users\Tang\Desktop> wsl --import docker-desktop-data F:\Docker\docker-desk
 
 ![image-20220110144148500](Docker安装教程/image-20220110144148500.png) 
 
-### 配置镜像加速
+## 配置镜像加速
 
 > 如图找到配置，追加配置。注意满足json格式，比如追加前面要补个逗号
 
