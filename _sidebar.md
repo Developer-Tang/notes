@@ -20,24 +20,28 @@
     - [GC回收机制.md](/JVM/GC回收机制.md)
 
 - [**MySQL**](/MySQL/README.md)
-    - [MySQL基础语法.md](/MySQL/MySQL基础语法.md)
-    - [MySQL索引详解.md](/MySQL/MySQL索引详解.md)
-    - [MySQL常见问题.md](/MySQL/MySQL常见问题.md)
+  - [MySQL基础语法.md](/MySQL/MySQL基础语法.md)
+  - [MySQL索引详解.md](/MySQL/MySQL索引详解.md)
+  - [MySQL常见问题.md](/MySQL/MySQL常见问题.md)
 
 - [**Redis**](/Redis/README.md)
-    - [Redis基础.md](/Redis/Redis基础.md)
-    - [Redis高并发问题.md](/Redis/Redis高并发问题.md)
-    - [Redis集群方案.md](/Redis/Redis集群方案.md)
-    - [Redis相关命令.md](/Redis/Redis相关命令.md)
+  - [Redis基础.md](/Redis/Redis基础.md)
+  - [Redis高并发问题.md](/Redis/Redis高并发问题.md)
+  - [Redis集群方案.md](/Redis/Redis集群方案.md)
+  - [Redis相关命令.md](/Redis/Redis相关命令.md)
+
+- [**Git**](/Git/README.md)
+  - [Git命令大全.md](/Git/Git命令大全.md)
+  - [Git常见使用问题.md](/Git/Git常见使用问题.md)
 
 - [**Spring**](/Spring/README.md)
-    - [Spring基础知识.md](/Spring/Spring基础知识.md)
-    - [SpringIOC详解.md](/Spring/SpringIOC详解.md)
-    - [SpringAOP详解.md](/Spring/SpringAOP详解.md)
-    - [SpringMVC详解.md](/Spring/SpringMVC详解.md)
+  - [Spring基础知识.md](/Spring/Spring基础知识.md)
+  - [SpringIOC详解.md](/Spring/SpringIOC详解.md)
+  - [SpringAOP详解.md](/Spring/SpringAOP详解.md)
+  - [SpringMVC详解.md](/Spring/SpringMVC详解.md)
 
 - [**SpringBoot**](/SpringBoot/README.md)
-    - [SpringBoot基础.md](/SpringBoot/SpringBoot基础.md)
+  - [SpringBoot基础.md](/SpringBoot/SpringBoot基础.md)
 
 - [**Mybatis**](/Mybatis/README.md)
     - [Mybatis基础.md](/Mybatis/Mybatis基础.md)
@@ -58,10 +62,6 @@
 - [**Docker**](/Docker/README.md)
     - [Docker安装教程.md](/Docker/Docker安装教程.md)
     - [Docker常见命令.md](/Docker/Docker常见命令.md)
-
-- [**Git**](/Git/README.md)
-    - [Git命令大全.md](/Git/Git命令大全.md)
-    - [Git常见使用问题.md](/Git/Git常见使用问题.md)
 
 - [**临时笔记**](/临时笔记/README.md)
 

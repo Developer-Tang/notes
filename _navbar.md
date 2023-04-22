@@ -7,6 +7,7 @@
   - [**JVM**](/JVM/README.md)
   - [**MySQL**](/MySQL/README.md)
   - [**Redis**](/Redis/README.md)
+  - [**Git**](/Git/README.md)
   - [**Spring**](/Spring/README.md)
   - [**SpringBoot**](/SpringBoot/README.md)
   - [**Mybatis**](/Mybatis/README.md)
@@ -15,7 +16,6 @@
   - [**RabbitMQ**](/RabbitMQ/README.md)
   - [**Nginx**](/Nginx/README.md)
   - [**Docker**](/Docker/README.md)
-  - [**Git**](/Git/README.md)
   - [**临时笔记**](/临时笔记/README.md)
 
 - [**📧Email**](mailto:tang_0416@126.com)

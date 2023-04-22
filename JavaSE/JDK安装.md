@@ -1,5 +1,3 @@
-## JDK安装
-
 ?> 下载地址：[JDK](https://www.oracle.com/java/technologies/downloads/#java8)
 
 ## 安装步骤
@@ -34,16 +32,3 @@
 > `Win+R` 唤起运行输入 `cmd` 回车，分别执行如下命令，不报错及成功
 > - `java` / `java -version`
 > - `javac`
-
-
-
-
-
-
-
-
-
-
-
-
-
