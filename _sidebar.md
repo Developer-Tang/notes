@@ -16,8 +16,8 @@
     - [锁.md](/JavaSE/锁.md)
 
 - [**JVM**](/JVM/README.md)
-    - [JVM内存模型.md](/JVM/JVM内存模型.md)
-    - [GC回收机制.md](/JVM/GC回收机制.md)
+  - [JVM内存模型.md](/JVM/JVM内存模型.md)
+  - [GC回收机制.md](/JVM/GC回收机制.md)
 
 - [**MySQL**](/MySQL/README.md)
   - [MySQL基础语法.md](/MySQL/MySQL基础语法.md)
@@ -42,9 +42,10 @@
 
 - [**SpringBoot**](/SpringBoot/README.md)
   - [SpringBoot基础.md](/SpringBoot/SpringBoot基础.md)
+  - [SpringBoot实现国际化.md](/SpringBoot/SpringBoot实现国际化.md)
 
 - [**Mybatis**](/Mybatis/README.md)
-    - [Mybatis基础.md](/Mybatis/Mybatis基础.md)
+  - [Mybatis基础.md](/Mybatis/Mybatis基础.md)
 
 - [**Dubbo**](/Dubbo/README.md)
     - [Dubbo基础.md](/Dubbo/Dubbo基础.md)
