@@ -54,13 +54,23 @@ spring:
     basename: i18n.messages # 扫描 resources 下的资源
 ```
 
-!> 路径根据自己的配置，支持 `a/b` `a.b` 的写法，b 为文件名（不需要后缀），且支持配置多个 `a.b,a.c`，但不支持配置文件夹路径 `i18n/*` `i18n.*`，下面会提供一种 [解决思路](/SpringBoot/SpringBoot实现国际化?id=优化配置) ，另外 messages_xx_XX 的文件不需要都配上，国际化会取匹配对应前缀的语言配置文件
+!> 路径根据自己的配置，支持 `a/b` `a.b` 的写法，b 为文件名（不需要后缀），且支持配置多个 `a.b,a.c`，但不支持配置文件夹路径 `i18n/*` `i18n.*`，下面会提供一种 [解决思路](/SpringBoot/SpringBoot实现国际化?id=优化配置) ，另外 messages_xx_XX 的文件不需要都配上，国际化会匹配对应前缀的语言配置文件
 
 ### 添加国际化配置类
 
 > 添加配置项
 
 ```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+
+import java.util.Locale;
+
 /**
  * 国际化配置类(类名任意)
  */
@@ -108,6 +118,14 @@ public class I18nMessageConfig implements WebMvcConfigurer {
 **示例：**
 
 ```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  * 测试接口
  */
@@ -117,21 +135,24 @@ public class TestController {
     @Autowired
     private MessageSource message;
 
+    /**
+     * 国际化测试
+     */
     @GetMapping("/i18n/{key}")
-    @ApiOperation("测试国际化")
     public String testLocale(@PathVariable String key, String... params) {
         return message.getMessage(key, params, LocaleContextHolder.getLocale());
     }
 }
 ```
 
-> 访问接口 `http://127.0.0.1:port/test/i18n/age.value?params=18` 与 `http://127.0.0.1:port/test/i18n/age.value?params=18&lang=en_us` 就可以获得不同语言的信息
+> 访问接口 `http://127.0.0.1:port/test/i18n/age.value?params=18` 与 `http://127.0.0.1:port/test/i18n/age.value?params=18&lang=en_us` 就可以获得不同语言的信息。如果想在
+**Thymeleaf** 里使用只需要在 `th:xx='#{xxx.xxx}'`
 
 !> `lang=?` 并不是必传项，当无该值时会取设置的 [默认语言](/SpringBoot/SpringBoot实现国际化?id=添加国际化配置类)
 
 ## 优化配置
 
-> 默认的国际化配置需要一个个配，如像下列这样分模块管理就会十分的麻烦，而且每次新增都要去添加新文件
+> 默认的国际化配置需要一个个配，如像下列这样分模块管理就会十分的麻烦，而且每次新增都要去配置中添加文件路径
 
 ```text
 resources
@@ -148,10 +169,21 @@ resources
 # application.yml
 spring:
   messages:
-    basename: i18n.messages,i18n.common,
+    basename: i18n.messages,i18n.common,...
 ```
 
 > 下面对该问题进行优化
+
+### 添加依赖
+
+```xml
+<!-- 工具包 -->
+<dependency>
+    <groupId>cn.hutool</groupId>
+    <artifactId>hutool-all</artifactId>
+    <version>5.8.15</version>
+</dependency>
+```
 
 ### 修改文件路径配置
 
@@ -165,6 +197,24 @@ spring:
 ### 修改配置类
 
 ```java
+
+import cn.hutool.core.io.FileUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.context.MessageSourceProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+
+import java.io.File;
+import java.util.Locale;
+
 /**
  * 国际化配置类(类名任意)
  */
@@ -197,7 +247,7 @@ public class I18nMessageConfig implements WebMvcConfigurer, InitializingBean {
     public void afterPropertiesSet() {
         String path = properties.getBasename();
         String[] split = path.split("([./])");
-        if (RegexUtil.regexVerify(path, "^[a-zA-Z0-9-_]*([./]]||[./]\\*{1,2})$") && split.length > 0) {
+        if (path.matches("^[a-zA-Z0-9-_]*([./]]||[./]\\*{1,2})$") && split.length > 0) {
             File file = FileUtil.file(split[0]);
             if (file.isDirectory()) {
                 File[] files = file.listFiles();
@@ -216,4 +266,4 @@ public class I18nMessageConfig implements WebMvcConfigurer, InitializingBean {
 
 ```
 
-> 到这里优化包扫描的工作就完成了，以上仅仅只是提供一个思路，具体操作上取决与实际路径/实际情况
+> 到这里优化包扫描的工作就完成了，以上仅仅只是提供一个思路，具体操作上取决于实际路径/实际情况
