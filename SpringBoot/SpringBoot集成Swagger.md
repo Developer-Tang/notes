@@ -9,12 +9,30 @@
 ### 导入依赖
 
 ```xml
-<!-- Swagger所需依赖 -->
-<dependency>
-    <groupId>io.springfox</groupId>
-    <artifactId>springfox-boot-starter</artifactId>
-    <version>3.0.0</version>
-</dependency>
+<!-- 所需依赖 -->
+<dependencys>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!-- Swagger所需依赖 -->
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-boot-starter</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+    <!-- 工具包 -->
+    <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>5.8.15</version>
+    </dependency>
+    <!-- 这个全凭个人喜好 -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+    </dependency>
+</dependencys>
 ```
 
 ### 配置文件
@@ -23,6 +41,10 @@
 
 ```yaml
 # application
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher # 因为 Swagger3.0 的路径匹配规则与 SpringBoot2.6.+ 不一致所以需要添加此配置
 swagger:
   enabled: true # 定义是否开启接口文档，生产环境一般为 false 关闭
   title: 脚手架 # swagger文档上显示的标题
@@ -202,10 +224,158 @@ http {
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Forwarded-Proto $scheme;
+            # X-Forwarded-Prefix 与规则保持一致即可
             proxy_set_header X-Forwarded-Prefix /api;
             proxy_pass http://localhost:9001/;
         }
     }
 }
-
 ```
+
+### 使用方式
+
+> 在所需的类上加上对应的注解即可，以下给出示例及使用场景
+
+```java
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@AllArgsConstructor
+@Api(tags = "用户控制器")
+@RequestMapping("/user")
+public class UserController {
+    // ...
+
+    @ApiOperation("登录")
+    @PostMapping("/login")
+    public String login(@RequestBody AuthParam param) {
+        // ...
+        return "token";
+    }
+}
+```
+
+```java
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@Data
+@ApiModel("授权参数")
+public class AuthParam {
+    @ApiModelProperty(value = "用户名", required = true)
+    public String username;
+    @ApiModelProperty(value = "用户名", required = true)
+    public String password;
+}
+```
+
+> 启动程序后，访问 `http://127.0.0.1:{port}/swagger-ui/index.html`，这样就可以看到生成的接口文档了
+
+## 补充
+
+### 存在鉴权逻辑时被拦截
+
+> 因为一般程序都不会完全开放访问，会用到一些鉴权框架或者自定义鉴权拦截器，这里访问 Swagger 文档就需要去设置对应的访问权限
+
+**自定义拦截器示例**
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.*;
+
+@EnableWebMvc
+@Configuration
+public class WebbAdapter implements WebMvcConfigurer {
+    @Autowired
+    AuthInterceptor authInterceptor; // 这个改成自己的拦截器实现类
+
+    /**
+     * ！！！重点
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authInterceptor)
+                // 按需设置不需要拦截的路径
+                .excludePathPatterns("/")
+                .excludePathPatterns("/csrf")
+                .excludePathPatterns("/error/**")
+                .excludePathPatterns("/webjars/**")
+                .excludePathPatterns("/swagger/**")
+                .excludePathPatterns("/v3/api-docs")
+                .excludePathPatterns("/swagger-ui.html")
+                .excludePathPatterns("/swagger-ui/**")
+                .excludePathPatterns("/swagger-ui/index.html")
+                .excludePathPatterns("/swagger-resources/**");
+    }
+}
+```
+
+**spring security 框架配置示例**
+
+```java
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    // ...
+
+    /**
+     * anyRequest          |   匹配所有请求路径
+     * access              |   SpringEl表达式结果为true时可以访问
+     * anonymous           |   匿名可以访问
+     * denyAll             |   用户不能访问
+     * fullyAuthenticated  |   用户完全认证可以访问（非remember-me下自动登录）
+     * hasAnyAuthority     |   如果有参数，参数表示权限，则其中任何一个权限可以访问
+     * hasAnyRole          |   如果有参数，参数表示角色，则其中任何一个角色可以访问
+     * hasAuthority        |   如果有参数，参数表示权限，则其权限可以访问
+     * hasIpAddress        |   如果有参数，参数表示IP地址，如果用户IP和参数匹配，则可以访问
+     * hasRole             |   如果有参数，参数表示角色，则其角色可以访问
+     * permitAll           |   用户可以任意访问
+     * rememberMe          |   允许通过remember-me登录的用户访问
+     * authenticated       |   用户登录后可访问
+     */
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                // CSRF禁用，因为不使用session
+                .csrf().disable()
+                // 基于token，所以不需要session
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                // 过滤请求
+                .authorizeRequests()
+                // 对于登录login ... 允许匿名访问
+                .antMatchers("/login").anonymous()
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/",
+                        "/*.html",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/profile/**"
+                ).permitAll()
+                .antMatchers("/api-docs").anonymous()
+                .antMatchers("/swagger-ui/**").anonymous()
+                .antMatchers("/swagger-ui.html").anonymous()
+                .antMatchers("/swagger-resources/**").anonymous()
+                .antMatchers("/webjars/**").anonymous()
+                // 除上面外的所有请求全部需要鉴权认证
+                .anyRequest().authenticated()
+                .and()
+                .headers().frameOptions().disable();
+        // 配置登出处理
+        // 添加JWT filter
+        // 添加CORS filter
+    }
+}
+```
+
+!> shiro 的暂时没用过，需要的自己去找下，上面的示例根据自己的项目去调整适配补全
