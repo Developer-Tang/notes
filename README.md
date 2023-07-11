@@ -17,5 +17,5 @@
     .osc_desc_color {color: #666666 !important;}
     .osc_link_color * {color: #9b9b9b !important;}
     .commit_short_id.osc_link_color{margin-right: 10px;}
-    .emoji{margin-right: 5px}
+    .emoji{margin-right: 5px;height: 1em !important}
 </style>
