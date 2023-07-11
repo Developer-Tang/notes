@@ -1,70 +1,21 @@
 - [**📖首页**](/README.md)
 
-- [**设计模式**](/设计模式/README.md)
-    - [7大设计原则.md](/设计模式/7大设计原则.md)
-    - [23种设计模式详解及应用.md](/设计模式/23种设计模式详解及应用.md)
-
-- [**计算机网络**](/计算机网络/README.md)
-    - [TCP详解.md](/计算机网络/TCP详解.md)
-    - [RPC详解.md](/计算机网络/RPC详解.md)
-
-- [**JavaSE**](/JavaSE/README.md)
-    - [JDK安装.md](/JavaSE/JDK安装.md)
-    - [基础知识.md](/JavaSE/基础知识.md)
-    - [集合框架.md](/JavaSE/集合框架.md)
-    - [多线程.md](/JavaSE/多线程.md)
-    - [锁.md](/JavaSE/锁.md)
-
-- [**JVM**](/JVM/README.md)
-  - [JVM内存模型.md](/JVM/JVM内存模型.md)
-  - [GC回收机制.md](/JVM/GC回收机制.md)
-
-- [**MySQL**](/MySQL/README.md)
-  - [MySQL基础语法.md](/MySQL/MySQL基础语法.md)
-  - [MySQL索引详解.md](/MySQL/MySQL索引详解.md)
-  - [MySQL常见问题.md](/MySQL/MySQL常见问题.md)
-
-- [**Redis**](/Redis/README.md)
-  - [Redis基础.md](/Redis/Redis基础.md)
-  - [Redis高并发问题.md](/Redis/Redis高并发问题.md)
-  - [Redis集群方案.md](/Redis/Redis集群方案.md)
-  - [Redis相关命令.md](/Redis/Redis相关命令.md)
-
-- [**Git**](/Git/README.md)
-  - [Git命令大全.md](/Git/Git命令大全.md)
-  - [Git常见使用问题.md](/Git/Git常见使用问题.md)
-
-- [**Spring**](/Spring/README.md)
-  - [Spring基础知识.md](/Spring/Spring基础知识.md)
-  - [SpringIOC详解.md](/Spring/SpringIOC详解.md)
-  - [SpringAOP详解.md](/Spring/SpringAOP详解.md)
-  - [SpringMVC详解.md](/Spring/SpringMVC详解.md)
-
-- [**SpringBoot**](/SpringBoot/README.md)
-  - [SpringBoot基础.md](/SpringBoot/SpringBoot基础.md)
-  - [SpringBootLogging配置.md](/SpringBoot/SpringBootLogging配置.md)
-  - [SpringBoot实现国际化.md](/SpringBoot/SpringBoot实现国际化.md)
-  - [SpringBoot集成Swagger.md](/SpringBoot/SpringBoot集成Swagger.md)
-
-- [**Mybatis**](/Mybatis/README.md)
-  - [Mybatis基础.md](/Mybatis/Mybatis基础.md)
-
-- [**Dubbo**](/Dubbo/README.md)
-    - [Dubbo基础.md](/Dubbo/Dubbo基础.md)
-
-- [**ActiveMQ**](/ActiveMQ/README.md)
-    - [ActiveMQ常见问题.md](/ActiveMQ/ActiveMQ常见问题.md)
-
-- [**RabbitMQ**](/RabbitMQ/README.md)
-    - [RabbitMQ安装教程.md](/RabbitMQ/RabbitMQ安装教程.md)
-    - [RabbitMQ工作模式.md](/RabbitMQ/RabbitMQ工作模式.md)
-
-- [**Nginx**](/Nginx/README.md)
-    - [Nginx应用.md](/Nginx/Nginx应用.md)
-
-- [**Docker**](/Docker/README.md)
-    - [Docker安装教程.md](/Docker/Docker安装教程.md)
-    - [Docker常见命令.md](/Docker/Docker常见命令.md)
-
-- [**临时笔记**](/临时笔记/README.md)
+- **计算机基础**
+    - [设计模式](/设计模式/README.md)
+    - [计算机网络](/计算机网络/README.md)
+- **开发语言**
+    - [Java](/Java/README.md)
+- **SQL数据库**
+    - [MySQL](/MySQL/README.md)
+- **NoSQL数据库**
+    - [Redis](/Redis/README.md)
+- **开发工具**
+    - [Git](/Git/README.md)
+- **消息队列**
+    - [ActiveMQ](/ActiveMQ/README.md)
+    - [RabbitMQ](/RabbitMQ/README.md)
+- **环境部署**
+    - [Nginx](/Nginx/README.md)
+    - [Docker](/Docker/README.md)
+- [临时笔记](/临时笔记/README.md)
 

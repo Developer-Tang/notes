@@ -54,7 +54,7 @@ spring:
     basename: i18n.messages # 扫描 resources 下的资源
 ```
 
-!> 路径根据自己的配置，支持 `a/b` `a.b` 的写法，b 为文件名（不需要后缀），且支持配置多个 `a.b,a.c`，但不支持配置文件夹路径 `i18n/*` `i18n.*`，下面会提供一种 [解决思路](/SpringBoot/SpringBoot实现国际化?id=优化配置) ，另外 messages_xx_XX 的文件不需要都配上，国际化会匹配对应前缀的语言配置文件
+!> 路径根据自己的配置，支持 `a/b` `a.b` 的写法，b 为文件名（不需要后缀），且支持配置多个 `a.b,a.c`，但不支持配置文件夹路径 `i18n/*` `i18n.*`，下面会提供一种 [解决思路](/Java/SpringBoot/SpringBoot实现国际化?id=优化配置) ，另外 messages_xx_XX 的文件不需要都配上，国际化会匹配对应前缀的语言配置文件
 
 ### 添加国际化配置类
 
@@ -148,7 +148,7 @@ public class TestController {
 > 访问接口 `http://127.0.0.1:port/test/i18n/age.value?params=18` 与 `http://127.0.0.1:port/test/i18n/age.value?params=18&lang=en_us` 就可以获得不同语言的信息。如果想在
 **Thymeleaf** 里使用只需要在 `th:xx='#{xxx.xxx}'`
 
-!> `lang=?` 并不是必传项，当无该值时会取设置的 [默认语言](/SpringBoot/SpringBoot实现国际化?id=添加国际化配置类)
+!> `lang=?` 并不是必传项，当无该值时会取设置的 [默认语言](/Java/SpringBoot/SpringBoot实现国际化?id=添加国际化配置类)
 
 ## 优化配置
 

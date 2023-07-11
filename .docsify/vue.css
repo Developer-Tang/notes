@@ -703,11 +703,12 @@ section.cover blockquote > p > a:hover {
     overflow: hidden;
     text-decoration: none;
     text-overflow: ellipsis;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .sidebar ul li a:hover {
-    text-decoration: underline
+    text-decoration: underline;
+    background-color: #f1f1f1;
 }
 
 .sidebar ul li ul {
