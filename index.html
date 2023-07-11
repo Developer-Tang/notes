@@ -34,6 +34,7 @@
         notFoundPage: '_404.md',
         alias: { //避免不必要的回退过程
             '/.*/_navbar.md': '/_navbar.md',
+            '/(.*)/.*/_sidebar.md': '/$1/_sidebar.md',
             '/(.*)/_sidebar.md': '/$1/_sidebar.md'
         },
         search: { // 搜索配置
@@ -48,30 +49,11 @@
             color: 'rgb(90,90,90)',
             language: 'chinese'
         },
-        lastModified: { // 文档更新时间配置
-            basePath: '/',
-            // preString: '上次修改时间：',
-            preString: 'Last Commit：',
-            repo: 'Developer-Tang/notes',
-            dateFormat: '{YYYY}-{MM}-{DD} {HH}:{mm}'
-        },
         copyCode: {
             buttonText: '复制',
             errorText: '失败',
             successText: '成功'
         }
-        // markdown: {
-        //     renderer: {
-        //         code: function (code, lang) {
-        //             if (lang === "mermaid") {
-        //                 return (
-        //                     '<div class="mermaid">' + mermaid.render('mermaid-svg-' + ++num, code) + "</div>"
-        //                 );
-        //             }
-        //             return this.origin.code.apply(this, arguments);
-        //         }
-        //     }
-        // }
     }
 </script>
 <!-- 基础JS -->
@@ -106,12 +88,6 @@
 <script src="//fastly.jsdelivr.net/npm/prismjs@1/components/prism-tsx.min.js"></script>
 <script src="//fastly.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
 <script src="//fastly.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
-<!-- 文档更新时间插件 -->
-<script src="//fastly.jsdelivr.net/npm/tinydate@1.3.0/dist/tinydate.min.js"></script>
-<script src="//fastly.jsdelivr.net/gh/rxmapple/docsify-last-modified@main/src/docsify-last-modified.js"></script>
-<!--Import mermaid-->
-<!-- <link rel="stylesheet" href="//fastly.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"> -->
-<!-- <script src="//fastly.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> -->
 <!-- Import 鼠标点击样式 -->
 <script src=".docsify/checkLove.js"></script>
 <!-- 百度统计 -->
