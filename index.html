@@ -12,6 +12,8 @@
     <link href=".docsify/vue.css" rel="stylesheet">
     <!-- 代码高亮样式 -->
     <link href="//fastly.jsdelivr.net/npm/prismjs@1/themes/prism.css" rel="stylesheet">
+    <!-- 分页插件样式 -->
+    <link href="//fastly.jsdelivr.net/npm/docsify-pagination@2.10.1/src/stylesheet.min.css" rel="stylesheet">
 </head>
 <body>
 <div id="app">静态资源加载中，请稍作等待。。。</div>
@@ -32,7 +34,6 @@
         // themeColor: '#3fb55c', // 主题色
         relativePath: true, //相对路径(默认为false)
         notFoundPage: '_404.md',
-        disqus: 'http-tangshh-cn',
         alias: { //避免不必要的回退过程
             '/.*/_navbar.md': '/_navbar.md',
             '/(.*)/.*/_sidebar.md': '/$1/_sidebar.md',
@@ -98,7 +99,6 @@
 <!-- 百度统计 -->
 <script async="async" src="//hm.baidu.com/hm.js?3db6d1c1f56b31fb2512b2c3314db79c"></script>
 <!-- 分页插件 -->
-<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-<script src="//fastly.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script>
+<script src="//fastly.jsdelivr.net/npm/docsify-pagination@2.10.1/dist/docsify-pagination.min.js"></script>
 </body>
 </html>
