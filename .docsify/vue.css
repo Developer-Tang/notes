@@ -722,6 +722,10 @@ section.cover blockquote > p > a:hover {
     font-weight: 600
 }
 
+.app-sub-sidebar .active {
+    background-color: var(--theme-color, #d5e8d4);
+}
+
 .app-sub-sidebar .section-link {
     color: #999;
 }
