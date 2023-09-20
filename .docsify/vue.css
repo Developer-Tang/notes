@@ -979,3 +979,7 @@ code .token {
     position: relative;
     left: auto
 }
+
+.docsify-pagination-container {
+    user-select: none;
+}
