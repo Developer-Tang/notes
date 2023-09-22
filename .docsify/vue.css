@@ -35,13 +35,12 @@ img.emoji, span.emoji {
 }
 
 span.emoji {
-    font-family: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-family: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji, serif;
     font-size: 1.2em
 }
 
 .progress {
     background-color: #42b983;
-    background-color: var(--theme-color, #42b983);
     height: 2px;
     left: 0;
     position: fixed;
@@ -53,8 +52,7 @@ span.emoji {
 }
 
 .search .search-keyword, .search a:hover {
-    color: #42b983;
-    color: var(--theme-color, #42b983)
+    color: #42b983
 }
 
 .search .search-keyword {
@@ -139,13 +137,11 @@ li input[type=checkbox] {
 }
 
 .app-nav a.active, .app-nav a:hover {
-    color: #42b983;
-    color: var(--theme-color, #42b983)
+    color: #42b983
 }
 
 .app-nav a.active {
-    border-bottom: 2px solid #42b983;
-    border-bottom: 2px solid var(--theme-color, #42b983)
+    border-bottom: 2px solid #42b983
 }
 
 .app-nav li {
@@ -213,7 +209,6 @@ li input[type=checkbox] {
 .github-corner svg {
     color: #fff;
     fill: #42b983;
-    fill: var(--theme-color, #42b983);
     height: 80px;
     width: 80px
 }
@@ -326,7 +321,6 @@ main.hidden {
 }
 
 .sidebar-toggle {
-    background-color: transparent;
     background-color: hsla(0, 0%, 100%, .8);
     border: 0;
     outline: none;
@@ -347,7 +341,6 @@ main.hidden {
 
 .sidebar-toggle span {
     background-color: #42b983;
-    background-color: var(--theme-color, #42b983);
     display: block;
     margin-bottom: 4px;
     width: 16px;
@@ -645,10 +638,8 @@ section.cover ul {
 section.cover .cover-main > p:last-child a {
     border-radius: 2rem;
     border: 1px solid #42b983;
-    border-color: var(--theme-color, #42b983);
     box-sizing: border-box;
     color: #42b983;
-    color: var(--theme-color, #42b983);
     display: inline-block;
     font-size: 1.05rem;
     letter-spacing: .1rem;
@@ -660,7 +651,6 @@ section.cover .cover-main > p:last-child a {
 
 section.cover .cover-main > p:last-child a:last-child {
     background-color: #42b983;
-    background-color: var(--theme-color, #42b983);
     color: #fff
 }
 
@@ -675,13 +665,11 @@ section.cover .cover-main > p:last-child a:hover {
 
 section.cover blockquote > p > a {
     border-bottom: 2px solid #42b983;
-    border-bottom: 2px solid var(--theme-color, #42b983);
     transition: color .3s
 }
 
 section.cover blockquote > p > a:hover {
-    color: #42b983;
-    color: var(--theme-color, #42b983)
+    color: #42b983
 }
 
 .sidebar, body {
@@ -718,12 +706,8 @@ section.cover blockquote > p > a:hover {
 .sidebar ul li.active > a {
     border-right: 3px solid;
     color: #42b983;
-    color: var(--theme-color, #42b983);
+    background-color: #d5e8d4;
     font-weight: 600
-}
-
-.app-sub-sidebar .active {
-    background-color: var(--theme-color, #d5e8d4);
 }
 
 .app-sub-sidebar .section-link {
@@ -743,7 +727,6 @@ section.cover blockquote > p > a:hover {
 
 .markdown-section a {
     color: #42b983;
-    color: var(--theme-color, #42b983);
     font-weight: 600
 }
 
@@ -790,7 +773,6 @@ section.cover blockquote > p > a:hover {
 
 .markdown-section blockquote {
     border-left: 4px solid #42b983;
-    border-left: 4px solid var(--theme-color, #42b983);
     color: #858585;
     margin: 2em 0;
     padding-left: 20px
@@ -918,8 +900,7 @@ section.cover blockquote > p > a:hover {
 }
 
 .token.string {
-    color: #42b983;
-    color: var(--theme-color, #42b983)
+    color: #42b983
 }
 
 .token.selector {
@@ -935,8 +916,7 @@ section.cover blockquote > p > a:hover {
 }
 
 .token.attr-value, .token.control, .token.directive, .token.unit {
-    color: #42b983;
-    color: var(--theme-color, #42b983)
+    color: #42b983
 }
 
 .token.function, .token.keyword {
