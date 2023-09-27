@@ -967,3 +967,7 @@ code .token {
 .docsify-pagination-container {
     user-select: none;
 }
+
+#main :not(div) a:hover::before {
+    content: '# ';
+}
