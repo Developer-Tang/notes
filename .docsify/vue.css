@@ -964,10 +964,14 @@ code .token {
     left: auto
 }
 
+#main :not(div) a:hover::before {
+    content: '# ';
+}
+
 .docsify-pagination-container {
     user-select: none;
 }
 
-#main :not(div) a:hover::before {
-    content: '# ';
+docsify-latex {
+    display: inline !important;
 }
