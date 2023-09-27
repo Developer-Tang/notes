@@ -964,8 +964,13 @@ code .token {
     left: auto
 }
 
-#main :not(div) a:hover::before {
+#main :not(div) a:not([class*=osc]):hover::before {
     content: '# ';
+}
+
+p > img{
+    display: flex;
+    margin: 0 auto;
 }
 
 .docsify-pagination-container {
