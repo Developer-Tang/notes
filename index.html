@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📒Tang的笔记</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta content="Description" name="description"/>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport"/>
+    <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+    <!-- docsify基础样式 -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.min.css" rel="stylesheet"/> -->
+    <link href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css" rel="stylesheet"/>
+    <!-- 代码高亮样式 -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css" rel="stylesheet"/>
+    <!-- 分页插件样式 -->
+    <link href="https://cdn.jsdelivr.net/npm/docsify-pagination@2/src/stylesheet.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            /* docsify-themeable样式微调 */
+            --content-max-width: 90rem;
+            --sidebar-nav-strong-text-transform: null;
+            --heading-h2-font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div id="app">静态资源加载中，请稍作等待。。。</div>
+<script>
+    window.$docsify = {
+        name: '📒Tang的笔记',
+        repo: 'https://gitee.com/Developer-Tang/notes', // 仓库地址
+        maxLevel: 0, // 文章标题转目录层级
+        subMaxLevel: 4, //
+        coverpage: true, // 开启封面
+        auto2top: true, // 切换文章后自动置顶
+        loadNavbar: true, // 设置导航栏
+        loadSidebar: true, // 设置侧边栏
+        executeScript: true, // 执行文档中脚本
+        onlyCover: true, // 首页封面独立显示
+        topMargin: 10, // 定位标题与顶部的距离
+        relativePath: true, //相对路径(默认为false)
+        // disqus: 'http-tangshh-cn', // Disqus评论系统
+        notFoundPage: '_404.md',
+        alias: { //避免不必要的回退过程
+            '/.*/_navbar.md': '/_navbar.md',
+            '/(.*)/.*/_sidebar.md': '/$1/_sidebar.md',
+            '/(.*)/_sidebar.md': '/$1/_sidebar.md'
+        },
+        search: { // 搜索配置
+            placeholder: '🔍请输入需要搜索的内容',
+            noData: '文档中未找到...',
+            hideOtherSidebarContent: true, // 是否隐藏其他侧边栏内容
+            depth: 4// 搜索标题的最大层级, 1 - 6
+        },
+        count: { // 字数统计配置
+            countable: true,
+            fontsize: '0.9em',
+            color: 'rgb(90,90,90)',
+            language: 'chinese'
+        },
+        copyCode: { //字数统计配置
+            buttonText: '复制',
+            errorText: '失败',
+            successText: '成功'
+        },
+        pagination: { //分页插件配置
+            previousText: 'Previous',
+            nextText: 'Next',
+            crossChapter: true,
+            crossChapterText: false
+        },
+        // 标签插件
+        tabs: {
+            persist: false, // 切换持久化
+            sync: true, // 同步切换
+            theme: 'classic', // 默认样式
+            tabComments: true, // tabs:xxx 替换标题
+            tabHeadings: false // ## **xxx** 标题样式关闭
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/external-script.min.js"></script>
+<!-- disqus评论 -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/disqus.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@3/dist/docsify-copy-code.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-count@1/dist/countable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-gradle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-properties.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
+<!-- 分页插件 -->
+<script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+<!-- 数学表达式 -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-latex@0/dist/docsify-latex.min.js"></script>
+<!-- 百度统计 -->
+<script src="https://hm.baidu.com/hm.js?3db6d1c1f56b31fb2512b2c3314db79c"></script>
+</body>
+</html>
