@@ -36,9 +36,18 @@ database:
 
 ## 读取配置的方式
 
+<!-- tabs:start -->
+<!-- tab:Environment -->
+
+```java
+public class Xxx
+```
+
+<!-- tabs:end -->
+
 - **注解**
     - `@PropertySource`
     - `@Value`
     - `@ConfigurationProperties`
-- **xx类**
+- **类**
     - `Environment`
