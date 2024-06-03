@@ -149,7 +149,7 @@ scp xxx@root:/opt/easy-rsa/pki/ca.crt ./
 
 !> 需要注意 OpenVPN 官网不能在国内正常访问，请科学上网后下载
 
-将上面 [导出](./关于OpenVPN的搭建?id=导出客户端连接文件) 的三个文件保存到 `C:\Users\用户名\OpenVPN\config` 或 `C:\Program Files\OpenVPN\config` 下，并新增文件 `client.ovpn` 如下
+将上面 [导出](/临时笔记/关于OpenVPN的搭建.md?id=导出客户端连接文件) 的三个文件保存到 `C:\Users\用户名\OpenVPN\config` 或 `C:\Program Files\OpenVPN\config` 下，并新增文件 `client.ovpn` 如下
 
 ```text
 client
