@@ -132,5 +132,5 @@ order by nickname desc;
 where nickname="" and sex=0 and addr=""	#走索引
 where nickname=""						#走索引
 where nickname="" and addr="" and sex=0	#不走索引
-where addr="" and sex=0				#不走索引
+where sex=0 and addr=""  				#不走索引
 ```
