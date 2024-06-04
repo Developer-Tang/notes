@@ -36,18 +36,89 @@ database:
 
 ## 读取配置的方式
 
+!> 需要注意的是这些类都是通过 spring 注册的 bean，如果是普通类就需要通过实现 `ApplicationContextAware` 来获取bean对象
+
 <!-- tabs:start -->
+<!-- tab:@Value -->
+
+```java
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
+
+@Slf4j
+@Configuration
+public class ServerInfo {
+    @Value("${server.port}")
+    private Integer port;
+
+    public void printPort() {
+        log.info("server port: {}", port);
+    }
+}
+```
+
+<!-- tab:@ConfigurationProperties -->
+
+```java
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@Slf4j
+@Configuration
+@ConfigurationProperties(prefix = "server")
+public class ServerInfo {
+    private Integer port;
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public void printPort() {
+        log.info("server port: {}", port);
+    }
+}
+```
+
 <!-- tab:Environment -->
 
 ```java
-public class Xxx
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
+
+@Slf4j
+@Configuration
+public class ServerInfo {
+    @Resource
+    private Environment env;
+
+    public void printPort() {
+        // env.getProperty("xx") 默认返回的是String，可以通过 env.getProperty("xx",Xx.Class) 指定类型，但类型兼容会报错
+        log.info("server port: {}", env.getProperty("server.port"));
+    }
+}
+```
+
+<!-- tab:@PropertySource -->
+
+`@PropertySource` 主要用于指定使用的属性文件
+
+```java
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+@Slf4j
+@Configuration
+@PropertySource("classpath:config/application.properties")
+public class ServerInfo {
+    @Resource
+    private Environment env;
+
+    public void printPort() {
+        log.info("server port: {}", env.getProperty("server.port"));
+    }
+}
 ```
 
 <!-- tabs:end -->
-
-- **注解**
-    - `@PropertySource`
-    - `@Value`
-    - `@ConfigurationProperties`
-- **类**
-    - `Environment`
