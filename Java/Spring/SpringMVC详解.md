@@ -42,10 +42,10 @@ public class HandlerExecutionChain {
 
 ### HandlerAdapter
 
-处理器适配器，负责对handler的方法进行调用，由于handler的类型可能有很多种，每种handler的调用过程可能不一样，此时就需要用到适配器HandlerAdapter，适配器对外暴露了统一的调用方式（见其handle方法），内部将handler的调用过程屏蔽了，HandlerAdapter接口源码如下，主要有 2 个方法需要注意：
+处理器适配器，负责对 handler 的方法进行调用，由于 handler 的类型可能有很多种，每种 handler 的调用过程可能不一样，此时就需要用到适配器 HandlerAdapter，适配器对外暴露了统一的调用方式（见其 handle 方法），内部将 handler 的调用过程屏蔽了，HandlerAdapter 接口源码如下，主要有 2 个方法需要注意：
 
-- supports：当前HandlerAdapter是否支持handler，其内部主要就是判HandlerAdapter是否能够处理handler的调用
-- handle：其内部负责调用handler的来处理用户的请求，返回返回一个ModelAndView对象
+- supports：当前 HandlerAdapter 是否支持handler，其内部主要就是判 HandlerAdapter 是否能够处理 handler 的调用
+- handle：其内部负责调用 handler 的来处理用户的请求，返回返回一个 ModelAndView 对象
 
 ```java
 public interface HandlerAdapter {
@@ -80,7 +80,7 @@ public interface ViewResolver {
 }
 ```
 
-这个接口有很多实现类，比如jsp的、freemarker、thymeleaf的等，他们都有各自对应的ViewResolver ，而比较常用的实现类是InternalResourceViewResolver，例如：
+这个接口有很多实现类，比如 jsp 的、freemarker、thymeleaf 的等，他们都有各自对应的 ViewResolver ，而比较常用的实现类是 InternalResourceViewResolver，例如：
 
 ```xml
 <!-- 添加视图解析器 -->
@@ -90,11 +90,11 @@ public interface ViewResolver {
 </bean>
 ```
 
-InternalResourceViewResolver大致的处理过程如下：
+InternalResourceViewResolver 大致的处理过程如下：
 
-1. 判断视图viewName是否以 `redirect:` 开头，如果是，则返回RedirectView类型的视图对象，RedirectView是用来重定向的，RedirectView内部用到的是response.sendRedirect(url)进行页面重定向；否则继续向下②
-2. 判断viewName是否以`forward:`开头，如果是，则返回InternalResourceView类型的视图对象，InternalResourceView是用来做跳转的，InternalResourceView内部用到的是request.getRequestDispatcher(path).forward(request, response)进行页面跳转；否则继续向下③
-3. 判断当前项目是否存在jstl所需的类，如果是，则返回JstlView类型的视图，否则返回InternalResourceView类型的视图，这两个视图的render方法最终会通过request.getRequestDispatcher(path).forward(request, response)进行页面的跳转，跳转的路径是 `prefix + viewName + suffix`
+1. 判断视图 viewName 是否以 `redirect:` 开头，如果是，则返回 RedirectView 类型的视图对象，RedirectView 是用来重定向的，RedirectView 内部用到的是 response.sendRedirect(url) 进行页面重定向；否则继续向下②
+2. 判断 viewName 是否以`forward:`开头，如果是，则返回 InternalResourceView 类型的视图对象，InternalResourceView 是用来做跳转的，InternalResourceView 内部用到的是 request.getRequestDispatcher(path).forward(request, response) 进行页面跳转；否则继续向下③
+3. 判断当前项目是否存在 jstl 所需的类，如果是，则返回 JstlView 类型的视图，否则返回 InternalResourceView 类型的视图，这两个视图的 render 方法最终会通过 request.getRequestDispatcher(path).forward(request, response) 进行页面的跳转，跳转的路径是 `prefix + viewName + suffix`
 
 ### View
 

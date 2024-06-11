@@ -99,11 +99,9 @@ logging:
         </appender>
     </springProfile>
 
-    <springProfile name="dev">
-        <root level="trace">
-            <appender-ref ref="console"/>
-        </root>
-    </springProfile>
+    <root level="trace">
+        <appender-ref ref="console"/>
+    </root>
 
     <springProfile name="!dev">
         <root level="trace">
@@ -112,7 +110,6 @@ logging:
         </root>
     </springProfile>
 </configuration>
-
 ```
 
 ### 使用
