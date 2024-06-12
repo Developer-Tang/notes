@@ -36,9 +36,9 @@ public class HandlerExecutionChain {
 - interceptorList：拦截器，当前请求匹配到的拦截器列表
 - interceptorIndex：拦截器索引，用来记录执行到第几个拦截器了
 
-### handler
+### Handler
 
-处理器，通常需要我们自己开发，一般指我们自定义的controller，在DispatcherServlet的控制下handler对具体的请求进行处理
+处理器，通常需要我们自己开发，一般指我们自定义的 Controller，在 DispatcherServlet 的控制下 handler 对具体的请求进行处理
 
 ### HandlerAdapter
 
@@ -142,18 +142,20 @@ public interface HttpMessageConverter<T> {
 
 ## MVC流程
 
+![SpringMVC处理流程简图.drawio.svg](SpringMVC详解/SpringMVC处理流程简图.drawio.svg)
+
 ### 大致流程
 
-1. 客户端请求提交到DispatchServlet(前端控制器)
-2. DispatchServlet查询HandlerMapping(处理器映射器)，找到对应的handler(处理器)
-3. DispatchServlet调用拦截器前置处理preHandle方法
-4. DispatchServlet通过HandlerAdapter(处理器适配器)执行对应的Handler逻辑
-5. DispatchServlet调用拦截器后置处理postHandle方法
-6. 返回ModelAndView(模型数据和视图)至DispatchServlet
-7. DispatchServlet将ModelAndView传给ViewResolver(视图解析器)
-8. ViewResolver解析后返回对应的View(视图)
-9. DispatchServlet将Model(模型数据)渲染至View中
-10. DispatchServlet将最终结果响应客户端
+1. 客户端请求提交到 DispatchServlet(前端控制器)
+2. DispatchServlet 查询 HandlerMapping(处理器映射器)，找到对应的 handler(处理器)
+3. DispatchServlet 调用拦截器前置处理 preHandle 方法
+4. DispatchServlet 通过 HandlerAdapter(处理器适配器)执行对应的 Handler 逻辑
+5. DispatchServlet 调用拦截器后置处理 postHandle方法
+6. 返回 ModelAndView(模型数据和视图)至 DispatchServlet
+7. DispatchServlet 将 ModelAndView 传给 ViewResolver(视图解析器)
+8. ViewResolver 解析后返回对应的 View(视图)
+9. DispatchServlet 将 Model(模型数据)渲染至 View 中
+10. DispatchServlet 将最终结果响应客户端
 
 ### 源码
 
