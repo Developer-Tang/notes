@@ -54,7 +54,7 @@ spring:
     basename: i18n.messages # 扫描 resources 下的资源
 ```
 
-!> 路径根据自己的配置，支持 `a/b` `a.b` 的写法，b 为文件名（不需要后缀），且支持配置多个 `a.b,a.c`，但不支持配置文件夹路径 `i18n/*` `i18n.*`，下面会提供一种 [解决思路](/Java/SpringBoot/SpringBoot实现国际化.md?id=优化配置) ，另外 messages_xx_XX 的文件不需要都配上，国际化会匹配对应前缀的语言配置文件
+!> 路径根据自己的配置，支持 `a/b` `a.b` 的写法，b 为文件名（不需要后缀），且支持配置多个 `a.b,a.c`，但不支持配置文件夹路径 `i18n/*` `i18n.*`，下面会提供一种 [解决思路](/Java/SpringBoot/SpringBoot集成国际化?id=优化配置) ，另外 messages_xx_XX 的文件不需要都配上，国际化会匹配对应前缀的语言配置文件
 
 ### 添加国际化配置类
 

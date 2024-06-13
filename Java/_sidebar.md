@@ -14,9 +14,19 @@
     - [SpringMVC详解.md](/Java/Spring/SpringMVC详解.md)
 - **SpringBoot**
     - [SpringBoot基础.md](/Java/SpringBoot/SpringBoot基础.md)
-    - [SpringBootLogging配置.md](/Java/SpringBoot/SpringBootLogging配置.md)
-    - [SpringBoot实现国际化.md](/Java/SpringBoot/SpringBoot实现国际化.md)
+  - [SpringBoot集成RedisTemplate.md](/Java/SpringBoot/SpringBoot集成RedisTemplate.md)
+  - [SpringBoot集成Logging.md](/Java/SpringBoot/SpringBoot集成Logging.md)
+  - [SpringBoot集成国际化.md](/Java/SpringBoot/SpringBoot集成国际化.md)
     - [SpringBoot集成Swagger.md](/Java/SpringBoot/SpringBoot集成Swagger.md)
+- **SpringCloud**
+  - [SpringCloud基础.md](/Java/SpringCloud/SpringCloud基础.md)
+  - [Eureka注册中心详解.md (待补充)](/Java/SpringCloud/Eureka注册中心详解.md)
+  - [Config配置中心详解.md (待补充)](/Java/SpringCloud/Config配置中心详解.md)
+  - [Bus总线详解.md (待补充)](/Java/SpringCloud/Bus总线详解.md)
+  - [Gateway网关详解.md (待补充)](/Java/SpringCloud/Gateway网关详解.md)
+  - [Zuul网关详解.md (待补充)](/Java/SpringCloud/Zuul网关详解.md)
+  - [OpenFeign远程调用详解.md (待补充)](/Java/SpringCloud/OpenFeign远程调用详解.md)
+  - [SpringCloud集成Eureka.md](/Java/SpringCloud/SpringCloud集成Eureka.md)
 - **Mybatis**
     - [Mybatis基础.md](/Java/Mybatis/Mybatis基础.md)
 - **Dubbo**

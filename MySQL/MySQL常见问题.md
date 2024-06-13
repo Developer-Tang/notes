@@ -71,3 +71,19 @@ where id in (select id from B)
 |--------|----|----|----|
 | MyISAM | ×  | ×  | √  |
 | InnoDB | √  | ×  | √  |
+
+## MySQL查询优化相关
+
+### 大数据量分页查询
+
+通过子查询优化,示例如下
+
+```sql
+select id,
+       name,
+       sex,
+       mobile,
+       xxx
+from user u
+         inner join (select id from user u where xxx = xxx limit 100000, 10) u1 on u.id = u1.id
+```
