@@ -276,7 +276,96 @@ public class AuthParam {
 
 启动程序后，访问 `http://127.0.0.1:{port}/swagger-ui/index.html`，这样就可以看到生成的接口文档了
 
-## 补充
+### 关于鉴权拦截
+
+因为一般程序都不会完全开放访问，会用到一些鉴权框架或者自定义鉴权拦截器，这里访问 Swagger 文档就需要去设置对应的访问权限
+
+**自定义拦截器示例**
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.*;
+
+@EnableWebMvc
+@Configuration
+public class WebbAdapter implements WebMvcConfigurer {
+    @Autowired
+    AuthInterceptor authInterceptor; // 这个改成自己的拦截器实现类
+
+    /**
+     * ！！！重点
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authInterceptor)
+                // 按需设置不需要拦截的路径
+                .excludePathPatterns("/")
+                .excludePathPatterns("/csrf")
+                .excludePathPatterns("/error/**")
+                .excludePathPatterns("/webjars/**")
+                .excludePathPatterns("/swagger/**")
+                .excludePathPatterns("/v3/api-docs")
+                .excludePathPatterns("/swagger-ui.html")
+                .excludePathPatterns("/swagger-ui/**")
+                .excludePathPatterns("/swagger-ui/index.html")
+                .excludePathPatterns("/swagger-resources/**");
+    }
+}
+```
+
+**spring security 框架配置示例**
+
+```java
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    // ...
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                // CSRF禁用，因为不使用session
+                .csrf().disable()
+                // 基于token，所以不需要session
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                // 过滤请求
+                .authorizeRequests()
+                // 对于登录login ... 允许匿名访问
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/",
+                        "/*.html",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/profile/**"
+                ).permitAll() // permitAll:用户可以任意访问
+                // .antMatchers("/login").anonymous() // 项目中不需要登录就能调用的接口 例如登录、注册、首页数据等
+                .antMatchers("/api-docs").anonymous() // anonymous:匿名可以访问
+                .antMatchers("/swagger-ui/**").anonymous()
+                .antMatchers("/swagger-ui.html").anonymous()
+                .antMatchers("/swagger-resources/**").anonymous()
+                .antMatchers("/webjars/**").anonymous()
+                // 除上面外的所有请求全部需要鉴权认证
+                .anyRequest().authenticated() // anyRequest:匹配所有请求路径 authenticated:用户登录后可访问
+                .and()
+                .headers().frameOptions().disable();
+        // 配置登出处理
+        // 添加JWT filter
+        // 添加CORS filter
+    }
+}
+```
+
+!> shiro 的暂时没用过，需要的自己去找下，上面的示例根据自己的项目去调整适配补全
+
+## 优化使用
 
 ### 自定义枚举提示
 
@@ -588,92 +677,3 @@ public class DateTimeSchema extends Schema<String> {
     }
 }
 ```
-
-### 存在鉴权逻辑时被拦截
-
-因为一般程序都不会完全开放访问，会用到一些鉴权框架或者自定义鉴权拦截器，这里访问 Swagger 文档就需要去设置对应的访问权限
-
-**自定义拦截器示例**
-
-```java
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.*;
-
-@EnableWebMvc
-@Configuration
-public class WebbAdapter implements WebMvcConfigurer {
-    @Autowired
-    AuthInterceptor authInterceptor; // 这个改成自己的拦截器实现类
-
-    /**
-     * ！！！重点
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authInterceptor)
-                // 按需设置不需要拦截的路径
-                .excludePathPatterns("/")
-                .excludePathPatterns("/csrf")
-                .excludePathPatterns("/error/**")
-                .excludePathPatterns("/webjars/**")
-                .excludePathPatterns("/swagger/**")
-                .excludePathPatterns("/v3/api-docs")
-                .excludePathPatterns("/swagger-ui.html")
-                .excludePathPatterns("/swagger-ui/**")
-                .excludePathPatterns("/swagger-ui/index.html")
-                .excludePathPatterns("/swagger-resources/**");
-    }
-}
-```
-
-**spring security 框架配置示例**
-
-```java
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
-
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    // ...
-
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                // CSRF禁用，因为不使用session
-                .csrf().disable()
-                // 基于token，所以不需要session
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                // 过滤请求
-                .authorizeRequests()
-                // 对于登录login ... 允许匿名访问
-                .antMatchers(
-                        HttpMethod.GET,
-                        "/",
-                        "/*.html",
-                        "/**/*.html",
-                        "/**/*.css",
-                        "/**/*.js",
-                        "/profile/**"
-                ).permitAll() // permitAll:用户可以任意访问
-                // .antMatchers("/login").anonymous() // 项目中不需要登录就能调用的接口 例如登录、注册、首页数据等
-                .antMatchers("/api-docs").anonymous() // anonymous:匿名可以访问
-                .antMatchers("/swagger-ui/**").anonymous()
-                .antMatchers("/swagger-ui.html").anonymous()
-                .antMatchers("/swagger-resources/**").anonymous()
-                .antMatchers("/webjars/**").anonymous()
-                // 除上面外的所有请求全部需要鉴权认证
-                .anyRequest().authenticated() // anyRequest:匹配所有请求路径 authenticated:用户登录后可访问
-                .and()
-                .headers().frameOptions().disable();
-        // 配置登出处理
-        // 添加JWT filter
-        // 添加CORS filter
-    }
-}
-```
-
-!> shiro 的暂时没用过，需要的自己去找下，上面的示例根据自己的项目去调整适配补全

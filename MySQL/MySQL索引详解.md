@@ -5,11 +5,19 @@
 - **主键索引：** 加速查询 + 列值唯一 + 表中只有一个（不可以有null）
 - **联合索引：** 多列值组成一个索引，专门用于组合搜索
 
+## 如何选择索引字段
+
+尽管索引能提高查询性能，但不当地使用反而起不到作用。在加索引时需要注意以下几点：
+
+1. **选择适合的列作为索引：** 经常作为查询条件（WHERE 子句）、排序条件（ORDER BY 子句）、分组条件（GROUP BY 子句）的列是建立索引的好选择。对于区分度低的字段不要建索引，例如性别、类型枚举等。频繁更新的字段同样不要作为主键或者索引，因为更新索引得成本会大幅提升。同样不建议用无序的值(例如身份证、UUID )作为索引，当主键具有不确定性，会造成叶子节点频繁分裂，出现磁盘存储的碎片化
+2. **避免过多的索引：** 每个索引都需要占用额外的磁盘空间。更新表（INSERT、UPDATE、DELETE 操作）时，所有的索引都需要被更新。维护索引文件需要成本；还会导致页分裂，IO 次数增多
+3. **利用前缀索引和索引列的顺序：** 对于字符串类型的列，可以考虑使用前缀索引来减少索引大小。在创建复合索引时，应该根据查询条件将最常用作过滤条件的列放在前面
+
 ## SQL索引分析
 
 ```sql
 explain
-查询语句
+    查询语句
 ```
 
 ```shell
@@ -17,7 +25,7 @@ mysql> explain select * from t_user;
 +----+-------------+------------+-------+---------------+---------+---------+------+------+-------------+
 | id | select_type | table      | type  | possible_keys | key     | key_len | ref  | rows | Extra       |
 +----+-------------+------------+-------+---------------+---------+---------+------+------+-------------+
-|  1 | PRIMARY     | t_user  | ALL   | NULL          | NULL    | NULL    | NULL |    9 | NULL        |
+|  1 | PRIMARY     | t_user     | ALL   | NULL          | NULL    | NULL    | NULL |    9 | NULL        |
 +----+-------------+------------+-------+---------------+---------+---------+------+------+-------------+
 ```
 
@@ -31,7 +39,7 @@ mysql> explain select * from t_user;
 
 - **table：** 正在访问的表名
 
-- **type**
+- **type**：索引类型
 
   > `all` < `index` < `range` < `index_merge` < `ref_or_null` < `ref` < `eq_ref` < `system\const`
 
@@ -50,13 +58,8 @@ mysql> explain select * from t_user;
     - *RANGE：* 对索引列进行范围查找
 
       ```sql
-      select *  from t_user where id <100
-      # >
-      # >= 
-      # <=
-      # <
-      # in()
-      # between a and b
+      # >、>=、<=、<、between a and b
+      select *  from t_user where id < 100
       ```
 
     - *INDEX_MERGE：* 合并索引，使用多个单列索引搜索
@@ -98,7 +101,7 @@ mysql> explain select * from t_user;
 ## 造成索引失效的原因
 
 ```sql
--- 使用like查询
+-- 使用左like查询 'x%'可以走索引
 select *
 from t_user
 where nickname like '%bc';
