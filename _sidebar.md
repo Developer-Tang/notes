@@ -4,9 +4,9 @@
 - **开发语言**
     - [Java](/Java/README.md)
 - **SQL数据库**
-    - [MySQL](/MySQL/README.md)
+    - [MySQL](/SQL数据库/MySQL/README.md)
 - **NoSQL数据库**
-    - [Redis](/Redis/README.md)
+    - [Redis](/NoSQL数据库/Redis/README.md)
 - **开发工具**
     - [Git](/Git/README.md)
 - **消息队列**

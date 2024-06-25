@@ -9,12 +9,13 @@
     - [GC回收机制.md](/Java/JVM/GC回收机制.md)
 - **Spring**
     - [Spring基础知识.md](/Java/Spring/Spring基础知识.md)
-    - [SpringIOC详解.md](/Java/Spring/SpringIOC详解.md)
+  - [SpringIoC详解.md](/Java/Spring/SpringIoC详解.md)
     - [SpringAOP详解.md](/Java/Spring/SpringAOP详解.md)
     - [SpringMVC详解.md](/Java/Spring/SpringMVC详解.md)
 - **SpringBoot**
     - [SpringBoot基础.md](/Java/SpringBoot/SpringBoot基础.md)
-    - [SpringBoot集成RedisTemplate.md](/Java/SpringBoot/SpringBoot集成RedisTemplate.md)
+  - [SpringBoot集成数据库.md](/Java/SpringBoot/SpringBoot集成数据库.md)
+  - [SpringBoot集成Redis.md](/Java/SpringBoot/SpringBoot集成Redis.md)
     - [SpringBoot集成Logging.md](/Java/SpringBoot/SpringBoot集成Logging.md)
     - [SpringBoot集成国际化.md](/Java/SpringBoot/SpringBoot集成国际化.md)
     - [SpringBoot集成Swagger.md](/Java/SpringBoot/SpringBoot集成Swagger.md)

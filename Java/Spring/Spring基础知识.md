@@ -1,10 +1,12 @@
+?> [Spring官方文档](https://docs.spring.io/spring-framework/reference/overview.html)
+
 ## Spring核心组件
 
 ![Spring核心组件](Spring基础知识/Spring核心组件.drawio.svg)
 
 ## Spring核心
 
-IOC 容器和 AOP 模块。通过 IOC 容器管理 POJO 对象以及他们之间的耦合关系；通过 AOP 以动态非侵入的方式增强服务。IOC 让相互协作的组件保持松散的耦合，而 AOP 编程允许你把遍布于应用各层的功能分离出来形成可重用的功能组件。
+IoC 容器和 AOP 模块。通过 IoC 容器管理 POJO 对象以及他们之间的耦合关系；通过 AOP 以动态非侵入的方式增强服务。IoC 让相互协作的组件保持松散的耦合，而 AOP 编程允许你把遍布于应用各层的功能分离出来形成可重用的功能组件。
 
 ## Spring框架中使用的设计模式
 

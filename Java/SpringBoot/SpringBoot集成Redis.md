@@ -1,8 +1,4 @@
-## 什么时RedisTemplate
-
-RedisTemplate 是简化 Redis 数据访问代码的辅助类
-
-## 导入依赖
+## 导入Redis依赖
 
 <!-- tabs:start -->
 <!-- tab:Maven -->
@@ -25,7 +21,7 @@ implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive
 
 <!-- tabs:end -->
 
-## 添加配置
+## 配置Redis信息
 
 <!-- tabs:start -->
 <!-- tab:yml/yaml -->
@@ -34,8 +30,8 @@ implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive
 spring:
   data:
     redis:
-      database: 0
       host: 127.0.0.1
+      database: 0
       password: 
 ```
 
