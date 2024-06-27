@@ -1,0 +1,4 @@
+- [**📖首页**](/README.md)
+- [**RabbitMQ**](/消息队列/RabbitMQ/README.md)
+    - [RabbitMQ安装教程.md](/消息队列/RabbitMQ/RabbitMQ安装教程.md)
+    - [RabbitMQ工作模式.md](/消息队列/RabbitMQ/RabbitMQ工作模式.md)

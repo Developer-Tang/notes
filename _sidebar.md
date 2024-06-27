@@ -1,19 +1,21 @@
 - **计算机基础**
-    - [设计模式](/设计模式/README.md)
-    - [计算机网络](/计算机网络/README.md)
+    - [设计模式](/计算机基础/设计模式/README.md)
+    - [计算机网络](/计算机基础/计算机网络/README.md)
 - **开发语言**
-    - [Java](/Java/README.md)
+    - [Java](/开发语言/Java/README.md)
 - **SQL数据库**
     - [MySQL](/SQL数据库/MySQL/README.md)
 - **NoSQL数据库**
     - [Redis](/NoSQL数据库/Redis/README.md)
-- **开发工具**
-    - [Git](/Git/README.md)
 - **消息队列**
-    - [ActiveMQ](/ActiveMQ/README.md)
-    - [RabbitMQ](/RabbitMQ/README.md)
-- **环境部署**
-    - [Nginx](/Nginx/README.md)
-    - [Docker](/Docker/README.md)
+    - [ActiveMQ](/消息队列/ActiveMQ/README.md)
+    - [RabbitMQ](/消息队列/RabbitMQ/README.md)
+- **搜索引擎**
+    - [ElasticSearch](/搜索引擎/ElasticSearch/README.md)
+- **运行环境**
+    - [Nginx](/运行环境/Nginx/README.md)
+    - [Docker](/运行环境/Docker/README.md)
+- **工具**
+    - [Git](/工具/Git/README.md)
 - **其他**
     - [临时笔记](/临时笔记/README.md)
