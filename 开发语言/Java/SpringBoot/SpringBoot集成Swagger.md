@@ -49,7 +49,7 @@ swagger:
   enabled: true # 定义是否开启接口文档，生产环境一般为 false 关闭
   title: 脚手架 # swagger文档上显示的标题
   author: Tang # 作者
-  authorUrl: https://gitee.com/Developer-Tang # 作者网站 
+  authorUrl: https://gitee.com/Tangshh # 作者网站 
   email: tang_0416@126.com # 联系邮箱
   version: V1.0 # 版本
   authHeader: Authorization # token的请求头

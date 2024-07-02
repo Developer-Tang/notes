@@ -32,3 +32,4 @@
   - [Mybatis基础.md](/开发语言/Java/Mybatis/Mybatis基础.md)
 - **Dubbo**
   - [Dubbo基础.md](/开发语言/Java/Dubbo/Dubbo基础.md)
+  - [Dubbo服务引用过程详解.md](/开发语言/Java/Dubbo/Dubbo服务引用过程详解.md)

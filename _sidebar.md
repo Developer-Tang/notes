@@ -1,6 +1,7 @@
 - **计算机基础**
     - [设计模式](/计算机基础/设计模式/README.md)
     - [计算机网络](/计算机基础/计算机网络/README.md)
+    - [算法](/计算机基础/算法/README.md)
 - **开发语言**
     - [Java](/开发语言/Java/README.md)
 - **SQL数据库**
@@ -13,6 +14,7 @@
 - **搜索引擎**
     - [ElasticSearch](/搜索引擎/ElasticSearch/README.md)
 - **运行环境**
+    - [Linux](/运行环境/Linux/README.md)
     - [Nginx](/运行环境/Nginx/README.md)
     - [Docker](/运行环境/Docker/README.md)
 - **工具**

@@ -6,7 +6,7 @@
 
 <!-- 解决Gitee挂件中emoji渲染问题 -->
 <meta name="referrer" content="no-referrer"/>
-<script src='https://gitee.com/Developer-Tang/notes/widget_preview' async defer></script>
+<script src='https://gitee.com/Tangshh/notes/widget_preview' async defer></script>
 <div id="osc-gitee-widget-tag"></div>
 <style>
     #osc-gitee-widget-tag{padding-top: 5em;user-select: none;}
