@@ -3,7 +3,7 @@
   - [基础知识.md](/开发语言/Java/JavaSE/基础知识.md)
   - [集合框架.md](/开发语言/Java/JavaSE/集合框架.md)
   - [多线程.md](/开发语言/Java/JavaSE/多线程.md)
-  - [锁.md](/开发语言/Java/JavaSE/锁.md)
+  - [JUC.md](/开发语言/Java/JavaSE/JUC.md)
 - **JVM**
   - [JVM内存模型.md](/开发语言/Java/JVM/JVM内存模型.md)
   - [GC回收机制.md](/开发语言/Java/JVM/GC回收机制.md)

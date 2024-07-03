@@ -80,7 +80,7 @@ mysql> explain select * from t_user;
        select tb2.id,tb1.nickname from tb2 left join tb1 on tb2.id = tb1.id;
       ```
 
-    - *CONST：* 常量，表最多有一个匹配行,因为仅有一行,在这行的列值可被优化器剩余部分认为是常数,const表很快,因为它们只读取一次。
+    - *CONST：* 常量，表最多有一个匹配行,因为仅有一行,在这行的列值可被优化器剩余部分认为是常数,const表很快,因为它们只读取一次
 
       ```sql
       select id from t_user where id = 2

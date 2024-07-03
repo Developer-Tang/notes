@@ -49,9 +49,9 @@ ApplicationContext 由 BeanFactory 派生而来，提供了更多面向实际应
 
 - **ClassPathXmlApplicationContext：** 默认从类路径加载配置文件
 - **FileSystemXmlApplicationContext：** 默认从文件系统中装载配置文件
-- **ApplicationEventPublisher：** 让容器拥有发布应用上下文事件的功能，包括容器启动事件、关闭事件等。
+- **ApplicationEventPublisher：** 让容器拥有发布应用上下文事件的功能，包括容器启动事件、关闭事件等
 - **MessageSource：** 为应用提供 i18n 国际化消息访问的功能
-- **ResourcePatternResolver ：** 所有 ApplicationContext 实现类都实现了类似于 PathMatchingResourcePatternResolver 的功能，可以通过带前缀的 Ant 风格的资源文件路径装载 Spring 的配置文件。
+- **ResourcePatternResolver ：** 所有 ApplicationContext 实现类都实现了类似于 PathMatchingResourcePatternResolver 的功能，可以通过带前缀的 Ant 风格的资源文件路径装载 Spring 的配置文件
 - **LifeCycle：** 该接口是Spring2.0加入的，该接口提供了 start() 和 stop() 两个方法，主要用于控制异步处理过程。在具体使用时，该接口同时被 ApplicationContext 实现及具体Bean实现，ApplicationContext 会将 start/stop 的信息传递给容器中所有实现了该接口的 Bean，以达到管理和控制 JMX、任务调度等目的
 - **ConfigurableApplicationContext：** 扩展于 ApplicationContext，它新增加了两个主要的方法：refresh() 和 close()，让 ApplicationContext 具有启动、刷新和关闭应用上下文的能力。在应用上下文关闭的情况下调用 refresh() 即可启动应用上下文，在已经启动的状态下，调用 refresh() 则清除缓存并重新装载配置信息，而调用 close() 则可关闭应用上下文
 
@@ -77,9 +77,9 @@ ApplicationContext 由 BeanFactory 派生而来，提供了更多面向实际应
 
 - **singleton：** 在 SpringIoC 容器中只有一个
 - **prototype：** 一个 Bean 存在多个实例
-- **request：** 每次 Http 请求都创建一个 Bean 该作用域仅在基于 web 的 SpringApplicationContext 情形下有效。
-- **session：** 在一个 HTTP Session 中，一个 bean 定义对应一个实例。该作用域仅在基于 web 的 Spring ApplicationContext 情形下有效。
-- **global-session：** 在一个全局的 HTTP Session 中，一个bean定义对应一个实例。该作用域仅在基于 web 的 Spring ApplicationContext 情形下有效。
+- **request：** 每次 Http 请求都创建一个 Bean 该作用域仅在基于 web 的 SpringApplicationContext 情形下有效
+- **session：** 在一个 HTTP Session 中，一个 bean 定义对应一个实例。该作用域仅在基于 web 的 Spring ApplicationContext 情形下有效
+- **global-session：** 在一个全局的 HTTP Session 中，一个bean定义对应一个实例。该作用域仅在基于 web 的 Spring ApplicationContext 情形下有效
 
 ?> SpringIoC 容器默认采用 singleton(单例) 创建 Bean，使用 prototype(多例) 因为频繁创建和销毁 Bean 会造成很大的性能消耗
 
