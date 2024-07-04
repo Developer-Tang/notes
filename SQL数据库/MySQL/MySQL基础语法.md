@@ -79,10 +79,10 @@ alter table tableName
 
 ### 创建索引
 
-- **normal：** 普通索引
-- **unique：** 唯一
-- **fulltext：** 全文索引，仅 **MyISAM** 类型表可用
-- **spatial：**  空间索引，同样仅 **MyISAM** 类型表可用
+- **normal** ：普通索引
+- **unique** ：唯一
+- **fulltext** ：全文索引，仅 **MyISAM** 类型表可用
+- **spatial** ： 空间索引，同样仅 **MyISAM** 类型表可用
 
 ```sql
 create
@@ -189,9 +189,9 @@ order by colName asc|desc
 
 ### 分页查询
 
-**offset：** 起始的行数，不包含在查询结果内，不传默认从0开始
+**offset** ：起始的行数，不包含在查询结果内，不传默认从0开始
 
-**size：** 每页的数量
+**size** ：每页的数量
 
 ```sql
 select *

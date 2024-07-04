@@ -10,9 +10,9 @@ IoC 容器和 AOP 模块。通过 IoC 容器管理 POJO 对象以及他们之间
 
 ## Spring框架中使用的设计模式
 
-- **单例模式：** Spring 创建 Bean 对象的默认方式就是单例
-- **代理模式：** SpringAOP 中使用了代理模式
-- **模板模式：** RestTemplate、RedisTemplate 等
-- **工厂模式：** Spring 中的 BeanFactory 就是典型的工厂方法模式
-- **观察者模式：** Spring 中的 Event 和 Listener
-- **责任链模式：** DispatcherServlet 中使用到了
+- **单例模式** ：Spring 创建 Bean 对象的默认方式就是单例
+- **代理模式** ：SpringAOP 中使用了代理模式
+- **模板模式** ：RestTemplate、RedisTemplate 等
+- **工厂模式** ：Spring 中的 BeanFactory 就是典型的工厂方法模式
+- **观察者模式** ：Spring 中的 Event 和 Listener
+- **责任链模式** ：DispatcherServlet 中使用到了

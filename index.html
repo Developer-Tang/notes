@@ -47,6 +47,10 @@
         relativePath: true, //相对路径(默认为false)
         // disqus: 'http-tangshh-cn', // Disqus评论系统
         notFoundPage: '_404.md',
+        alias: { //只扫前两层
+            '.*/_navbar.md': '_navbar.md',
+            '((/.*){2})/.*/_sidebar.md': '$1/_sidebar.md'
+        },
         search: { // 搜索配置
             placeholder: '🔍请输入需要搜索的内容',
             noData: '文档中未找到...',

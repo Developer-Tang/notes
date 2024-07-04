@@ -57,34 +57,34 @@ Consumer 端在发起调用之前会先走 filter 链；Provider 端在接收到
 
 ## Dubbo框架设计分层
 
-1. **服务接口层(Service)：** 该层是与实际业务逻辑相关的，根据服务提供方和服务消费方的业务设计对应的接口和实现
-2. **配置层(Config)：** 对外配置接口，以 ServiceConfig 和 ReferenceConfig 为中心
-3. **服务代理层(Proxy)：** 服务接口透明代理，生成服务的客户端 Stub 和服务器端 Skeleton
-4. **服务注册层(Registry)：** 封装服务地址的注册与发现，以服务 URL 为中心
-5. **集群层(Cluster)：** 封装多个提供者的路由及负载均衡，并桥接注册中心，以Invoker为中心
-6. **监控层(Monitor)：** RPC 调用次数和调用时间监控
-7. **远程调用层(Protocol)：** 封装 RPC 调用，以 Invocation 和 Result 为中心，扩展接口为 Protocol、Invoker 和 Exporter
-8. **信息交换层(Exchange)：** 封装请求响应模式，同步转异步，以 Request 和 Response 为中心
-9. **网络传输层(Transport)：** 抽象 mina 和 netty 为统一接口，以 Message 为中心
-10. **数据序列化层(Serialize)：** 负责管理整个框架中的数据传输的序列化和反序列化
+1. **服务接口层(Service)** ：该层是与实际业务逻辑相关的，根据服务提供方和服务消费方的业务设计对应的接口和实现
+2. **配置层(Config)** ：对外配置接口，以 ServiceConfig 和 ReferenceConfig 为中心
+3. **服务代理层(Proxy)** ：服务接口透明代理，生成服务的客户端 Stub 和服务器端 Skeleton
+4. **服务注册层(Registry)** ：封装服务地址的注册与发现，以服务 URL 为中心
+5. **集群层(Cluster)** ：封装多个提供者的路由及负载均衡，并桥接注册中心，以Invoker为中心
+6. **监控层(Monitor)** ：RPC 调用次数和调用时间监控
+7. **远程调用层(Protocol)** ：封装 RPC 调用，以 Invocation 和 Result 为中心，扩展接口为 Protocol、Invoker 和 Exporter
+8. **信息交换层(Exchange)** ：封装请求响应模式，同步转异步，以 Request 和 Response 为中心
+9. **网络传输层(Transport)** ：抽象 mina 和 netty 为统一接口，以 Message 为中心
+10. **数据序列化层(Serialize)** ：负责管理整个框架中的数据传输的序列化和反序列化
 
 ## Dubbo支持的协议
 
-- **Dubbo(推荐)：** 单一长连接和 NIO 异步通讯，适合大并发小数据量（建议出入参数数据包小于 100K）的服务调用，以及消费者远大于提供者。TCP 传输协议，NIO 异步传输，Hessian 二进制序列化
-- **Rmi：** 采用 JDK 标准的 rmi 协议实现，传输参数和返回参数对象需要实现 Serializable 接口，使用 java 标准二进制序列化机制，使用阻塞式短连接，传输数据包大小混合，消费者和提供者个数差不多，可传文件。 多个短连接，TCP 协议传输，同步传输，适用常规的远程服务调用和 rmi 互操作。在依赖低版本的 Common-Collections 包，java 序列化存在安全漏洞
-- **Webservice：** 基于 WebService 的远程调用协议，集成 CXF 实现，提供和原生 WebService 的互操作。多个短连接，基于 HTTP 传输，同步传输，适用系统集成和跨语言调用
-- **Http：** 基于 Http 表单提交的远程调用协议，使用 Spring 的 HttpInvoke 实现。多个短连接，传输协议 HTTP，传入参数大小混合，提供者个数多于消费者，需要给应用程序和浏览器JS调用
-- **Hessian：** 集成 Hessian 服务，基于HTTP通讯，采用Servlet暴露服务，Dubbo内嵌Jetty作为服务器时默认实现，提供与 Hessian 服务互操作。多个短连接，同步 HTTP 传输，Hessian 二进制序列化，传入参数较大，提供者大于消费者，提供者压力较大，可传文件
-- **Thrift：** Thrift 是 Facebook 捐给 Apache 的一个RPC框架，当前 Dubbo 支持的 Thrift 协议是对 Thrift 原生协议的扩展，在原生协议的基础上添加了一些额外的头信息，比如 service name，magic number 等
-- **Memcached：** 基于 Memcached 实现的RPC协议
-- **Redis：** 基于 Redis 实现的RPC协议
+- **Dubbo(推荐)** ：单一长连接和 NIO 异步通讯，适合大并发小数据量（建议出入参数数据包小于 100K）的服务调用，以及消费者远大于提供者。TCP 传输协议，NIO 异步传输，Hessian 二进制序列化
+- **Rmi** ：采用 JDK 标准的 rmi 协议实现，传输参数和返回参数对象需要实现 Serializable 接口，使用 java 标准二进制序列化机制，使用阻塞式短连接，传输数据包大小混合，消费者和提供者个数差不多，可传文件。 多个短连接，TCP 协议传输，同步传输，适用常规的远程服务调用和 rmi 互操作。在依赖低版本的 Common-Collections 包，java 序列化存在安全漏洞
+- **Webservice** ：基于 WebService 的远程调用协议，集成 CXF 实现，提供和原生 WebService 的互操作。多个短连接，基于 HTTP 传输，同步传输，适用系统集成和跨语言调用
+- **Http** ：基于 Http 表单提交的远程调用协议，使用 Spring 的 HttpInvoke 实现。多个短连接，传输协议 HTTP，传入参数大小混合，提供者个数多于消费者，需要给应用程序和浏览器JS调用
+- **Hessian** ：集成 Hessian 服务，基于HTTP通讯，采用Servlet暴露服务，Dubbo内嵌Jetty作为服务器时默认实现，提供与 Hessian 服务互操作。多个短连接，同步 HTTP 传输，Hessian 二进制序列化，传入参数较大，提供者大于消费者，提供者压力较大，可传文件
+- **Thrift** ：Thrift 是 Facebook 捐给 Apache 的一个RPC框架，当前 Dubbo 支持的 Thrift 协议是对 Thrift 原生协议的扩展，在原生协议的基础上添加了一些额外的头信息，比如 service name，magic number 等
+- **Memcached** ：基于 Memcached 实现的RPC协议
+- **Redis** ：基于 Redis 实现的RPC协议
 
 ## Dubbo支持的注册中心
 
-- **Multicast 注册中心：** Multicast 注册中心不需要任何中心节点，只要广播地址，就能进行服务注册和发现。基于网络中组播传输实现
-- **Zookeeper 注册中心：** 基于分布式协调系统 Zookeeper 实现，采用 Zookeeper 的 watch 机制实现数据变更
-- **Redis 注册中心：** 基于 Redis 实现，采用 key/Map 存储，住 key 存储服务名和类型，Map 中 key 存储服务URL，value 服务过期时间。基于 redis 的发布/订阅模式通知数据变更
-- **Simple 注册中心：** 一个简单的基于内存的注册中心实现，它本身就是一个标准的 RPC 服务，不支持集群，也可能出现单点故障
+- **Multicast 注册中心** ：Multicast 注册中心不需要任何中心节点，只要广播地址，就能进行服务注册和发现。基于网络中组播传输实现
+- **Zookeeper 注册中心** ：基于分布式协调系统 Zookeeper 实现，采用 Zookeeper 的 watch 机制实现数据变更
+- **Redis 注册中心** ：基于 Redis 实现，采用 key/Map 存储，住 key 存储服务名和类型，Map 中 key 存储服务URL，value 服务过期时间。基于 redis 的发布/订阅模式通知数据变更
+- **Simple 注册中心** ：一个简单的基于内存的注册中心实现，它本身就是一个标准的 RPC 服务，不支持集群，也可能出现单点故障
 
 ## Dubbo集群
 

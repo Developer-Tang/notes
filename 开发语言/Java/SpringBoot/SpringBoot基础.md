@@ -2,9 +2,9 @@
 
 **@SpringBootApplication**
 
-- **@SpringBootConfiguration：** 组合了 @Configuration 注解，实现配置文件的功能
-- **@EnableAutoConfiguration：** 打开自动配置的功能，也可以关闭某个自动配置的选项。 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
-- **@ComponentScan：** Spring组件扫描
+- **@SpringBootConfiguration** ：组合了 @Configuration 注解，实现配置文件的功能
+- **@EnableAutoConfiguration** ：打开自动配置的功能，也可以关闭某个自动配置的选项。 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
+- **@ComponentScan** ：Spring组件扫描
 
 ## 支持配置文件格式
 

@@ -27,14 +27,14 @@
 
 ![Mybatis工作原理.drawio.svg](Mybatis基础/Mybatis工作原理.drawio.svg)
 
-1. **读取 MyBatis 配置文件：** `mybatis-config.xml` 为 MyBatis 的全局配置文件，配置了 MyBatis 的运行环境等信息，例如数据库连接信息
-2. **加载映射文件：** 映射文件即 SQL 映射文件，该文件中配置了操作数据库的 SQL 语句，需要在 MyBatis 配置文件 mybatis-config.xml 中加载。 mybatis-config.xml 文件可以加载多个映射文件，每个文件对应数据库中的一张表
-3. **构造会话工厂：** 通过 MyBatis 的环境等配置信息构建会话工厂 SqlSessionFactory
-4. **创建会话对象：** 由会话工厂创建 SqlSession 对象，该对象中包含了执行 SQL 语句的所有方法
-5. **Executor 执行器：** MyBatis 底层定义了一个 Executor 接口来操作数据库，它将根据 SqlSession 传递的参数动态地生成需要执行的 SQL 语句，同时负责查询缓存的维护
-6. **MappedStatement 对象：** 在 Executor 接口的执行方法中有一个 MappedStatement 类型的参数，该参数是对映射信息的封装，用于存储要映射的 SQL 语句的 id 、参数等信息
-7. **输入参数映射：** 输入参数类型可以是 Map 、 List 等集合类型，也可以是基本数据类型和 POJO 类型。输入参数映射过程类似于 JDBC 对 preparedStatement 对象设置参数的过程
-8. **输出结果映射：** 输出结果类型可以是 Map 、 List 等集合类型，也可以是基本数据类型和 POJO 类型。输出结果映射过程类似于 JDBC 对结果集的解析过程
+1. **读取 MyBatis 配置文件** ：`mybatis-config.xml` 为 MyBatis 的全局配置文件，配置了 MyBatis 的运行环境等信息，例如数据库连接信息
+2. **加载映射文件** ：映射文件即 SQL 映射文件，该文件中配置了操作数据库的 SQL 语句，需要在 MyBatis 配置文件 mybatis-config.xml 中加载。 mybatis-config.xml 文件可以加载多个映射文件，每个文件对应数据库中的一张表
+3. **构造会话工厂** ：通过 MyBatis 的环境等配置信息构建会话工厂 SqlSessionFactory
+4. **创建会话对象** ：由会话工厂创建 SqlSession 对象，该对象中包含了执行 SQL 语句的所有方法
+5. **Executor 执行器** ：MyBatis 底层定义了一个 Executor 接口来操作数据库，它将根据 SqlSession 传递的参数动态地生成需要执行的 SQL 语句，同时负责查询缓存的维护
+6. **MappedStatement 对象** ：在 Executor 接口的执行方法中有一个 MappedStatement 类型的参数，该参数是对映射信息的封装，用于存储要映射的 SQL 语句的 id 、参数等信息
+7. **输入参数映射** ：输入参数类型可以是 Map 、 List 等集合类型，也可以是基本数据类型和 POJO 类型。输入参数映射过程类似于 JDBC 对 preparedStatement 对象设置参数的过程
+8. **输出结果映射** ：输出结果类型可以是 Map 、 List 等集合类型，也可以是基本数据类型和 POJO 类型。输出结果映射过程类似于 JDBC 对结果集的解析过程
 
 ## Mapper接口的工作原理
 
@@ -59,32 +59,32 @@ Mapper接口中的方法不能进行重载，因为采用 **全限定名 + 方�
 
 **格式化**
 
-- **`<where>`：** 动态添加 `where` 关键字，并处理条件开头通过动态sql可能多出来的 `AND` | `OR`
-- **`<set>`：** 当动态 sql 拼接时，`set` 后未设置更新字段及其值时去除多余的 `set` 关键字
-- **`<trim>`：** 与 where 关键字功能相似，区别在于该标签可以指定要去除的关键字
+- **`<where>`** ：动态添加 `where` 关键字，并处理条件开头通过动态sql可能多出来的 `AND` | `OR`
+- **`<set>`** ：当动态 sql 拼接时，`set` 后未设置更新字段及其值时去除多余的 `set` 关键字
+- **`<trim>`** ：与 where 关键字功能相似，区别在于该标签可以指定要去除的关键字
 
 **动态SQL**
 
-- **`<if>`：** 当 `test` 表达式成立时，拼接标签中的 sql
-- **`<foreac>`：** 循环遍历集合元素，常用于 `in` 和 `insert into values`
-- **`<choose>`：** 相当于 java 中的 switch ，当内部按顺序任意一个 `<when>` 条件成即结束，如果都不满足则使用 `<ootherwise>`
-- **`<when>`：** 相当于 switch 语句中的 case ，默认带 break 的那种
-- **`<ootherwise>`：** 相当于 switch 语句中的 default
+- **`<if>`** ：当 `test` 表达式成立时，拼接标签中的 sql
+- **`<foreac>`** ：循环遍历集合元素，常用于 `in` 和 `insert into values`
+- **`<choose>`** ：相当于 java 中的 switch ，当内部按顺序任意一个 `<when>` 条件成即结束，如果都不满足则使用 `<ootherwise>`
+- **`<when>`** ：相当于 switch 语句中的 case ，默认带 break 的那种
+- **`<ootherwise>`** ：相当于 switch 语句中的 default
 - **`<bind>`：**
 
 **结果映射**
 
-- **`<resultMap>`：** 结果映射集
-- **`<id>`：** 设置表主键字段与属性的关联
-- **`<result>`：** 设置属性与字段的关联
-- **`<association>`：** 设置属性与记录属于一对一关联关系，常用与属性为其他对象
-- **`<collection>`：** 设置属性与记录属于一对多关联关系，常用于属性为集合
+- **`<resultMap>`** ：结果映射集
+- **`<id>`** ：设置表主键字段与属性的关联
+- **`<result>`** ：设置属性与字段的关联
+- **`<association>`** ：设置属性与记录属于一对一关联关系，常用与属性为其他对象
+- **`<collection>`** ：设置属性与记录属于一对多关联关系，常用于属性为集合
 
 **其他**
 
-- **`<sql>`：** 定义 SQL 片段
-- **`<include>`：** 导入 sql 片段
-- **`<selectKey>`：** 设置主键生成策略
+- **`<sql>`** ：定义 SQL 片段
+- **`<include>`** ：导入 sql 片段
+- **`<selectKey>`** ：设置主键生成策略
 
 ## #{}与${}的区别
 
