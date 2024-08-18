@@ -603,12 +603,9 @@ public void preInstantiateSingletons() throws BeansException {
                     final FactoryBean<?> factory = (FactoryBean<?>) bean;
                     boolean isEagerInit;
                     if (System.getSecurityManager() != null && factory instanceof SmartFactoryBean) {
-                        isEagerInit = AccessController.doPrivileged((PrivilegedAction<Boolean>)
-                                        ((SmartFactoryBean<?>) factory)::isEagerInit,
-                                getAccessControlContext());
+                        isEagerInit = AccessController.doPrivileged((PrivilegedAction<Boolean>) ((SmartFactoryBean<?>) factory)::isEagerInit, getAccessControlContext());
                     } else {
-                        isEagerInit = (factory instanceof SmartFactoryBean &&
-                                ((SmartFactoryBean<?>) factory).isEagerInit());
+                        isEagerInit = (factory instanceof SmartFactoryBean && ((SmartFactoryBean<?>) factory).isEagerInit());
                     }
                     if (isEagerInit) {
                         getBean(beanName);
