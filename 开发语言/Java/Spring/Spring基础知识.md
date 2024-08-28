@@ -16,3 +16,4 @@ IoC 容器和 AOP 模块。通过 IoC 容器管理 POJO 对象以及他们之间
 - **工厂模式** ：Spring 中的 BeanFactory 就是典型的工厂方法模式
 - **观察者模式** ：Spring 中的 Event 和 Listener
 - **责任链模式** ：DispatcherServlet 中使用到了
+- **...**

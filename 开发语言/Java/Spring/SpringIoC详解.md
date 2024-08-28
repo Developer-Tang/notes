@@ -83,6 +83,8 @@ ApplicationContext 由 BeanFactory 派生而来，提供了更多面向实际应
 
 ?> SpringIoC 容器默认采用 singleton(单例) 创建 Bean，使用 prototype(多例) 因为频繁创建和销毁 Bean 会造成很大的性能消耗
 
+!> 如果一个单例 Bean 内部维护了可变的状态（如 List、Map 等集合类型），并且这些状态被多个线程共享和修改，那么就可能导致线程安全问题
+
 ### 依赖注入的方式
 
 <!-- tabs:start -->
@@ -148,3 +150,5 @@ public UserService userService() {
 ## 其他问题
 
 ### 三级缓存解决循环依赖的原理
+
+在创建Bean时，首先检查一级缓存（`singletonObjects`）中是否已有创建完成的Bean实例；如果没有，则创建 Bean 实例并填充其属性；在填充过程中，如果发现依赖的 Bean 尚未创建，Spring 会将当前 Bean 的半成品实例存入二级缓存（`earlySingletonObjects`），并将创建该 Bean 的工厂存入三级缓存（`singletonFactories`）。这样，当依赖的 Bean 创建完成后，Spring 可以从二级缓存中取出并继续完成当前 Bean 的创建和初始化，最终将完全初始化的 Bean 放入一级缓存中。通过这种方式，Spring 能够有效地处理循环依赖，确保 Bean 的正确创建和初始化。
