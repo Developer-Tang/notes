@@ -25,10 +25,10 @@ resources
 ├─ ...
 └─ i18n
     ├─ messages.properties
-    ├─ messages_en_US.properties
-    ├─ messages_zh_CN.properties
+    ├─ messages_en.properties
+    ├─ messages_zh.properties
     ├─ ....
-    └─ messages_xx_XX.properties
+    └─ messages_xx.properties
 ```
 
 ```properties
@@ -78,7 +78,7 @@ import java.util.Locale;
 public class I18nMessageConfig implements WebMvcConfigurer {
 
     /**
-     * 配置国际化Cookie
+     * 配置国际化Cookie ps:springboot默认提供了Accept-Language请求头处理的
      */
     @Bean
     public LocaleResolver localeResolver() {
@@ -256,17 +256,19 @@ public class I18nMessageConfig implements WebMvcConfigurer, InitializingBean {
         String path = properties.getBasename();
         if (StrUtil.isNotBlank(path) && path.matches("^\\w*([./](\\*|\\w*))+$")) {
             try {
-                // 以下写法是为了跨模块打包时也能加载到，如文件定义在common模块下在server模块打jar包，一样可以正常使用
+                // 以下写法是为了跨模块打包时也能加载到，如文件定义在core模块下在server模块打jar包，一样可以正常使用
                 PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
                 Resource[] resources = resolver.getResources(ResourceLoader.CLASSPATH_URL_PREFIX + path.replace(".", "/"));
-                List<String> baseNames = Arrays.stream(resources).filter(e -> {
-                    String filename = e.getFilename();
-                    return filename != null && !filename.matches("\\w*[-_][a-zA-z]{2}_[a-zA-Z]{2}\\..*");
-                }).map(resource -> {
-                    String[] split = resource.getFilename().split("\\.");
-                    return path.replace("*", split[0]);
-                }).collect(Collectors.toList());
+                List<String> baseNames = new ArrayList<>();
+                for (Resource resource : resources) {
+                    String filename = resource.getFilename();
+                    if (filename != null && filename.matches("[\\w-_]*(?![a-zA-z]{2}_[a-zA-Z]{2})\\.properties")) {
+                        baseNames.add(path.replace(".", "/").replace("*", resource.getFilename().split("\\.")[0]));
+                    }
+                }
                 messageSource.setBasenames(baseNames.toArray(new String[]{}));
+                messageSource.setDefaultEncoding("UTF-8");
+                messageSource.setCacheSeconds(3000);
             } catch (IOException e) {
                 log.error("i18n file path {} not found file/directory", path, e);
             }
