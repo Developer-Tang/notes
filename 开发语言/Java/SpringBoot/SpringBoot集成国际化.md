@@ -279,3 +279,5 @@ public class I18nMessageConfig implements WebMvcConfigurer, InitializingBean {
 ```
 
 到这里优化包扫描的工作就完成了，以上仅仅只是提供一个思路，具体操作上取决于实际路径/实际情况
+
+?> 假如资源文件为 common_en.properties ，这时请求为 en 与 en-US 、en-xx 的都可以命中，但 common_en_US.properties 并不会被请求 en 命中 
