@@ -533,16 +533,19 @@ import java.util.Objects;
  * StringSchema
  */
 public class StringSchema extends Schema<String> {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String example = "";
-
     // ...
+    @Override
+    public Object getExample() {
+        return StringUtils.defaultString(example); // 重写获取示例值给个默认值就好
+    }
 }
 ```
 
 ### Date类型示例值
 
 在使用 Swagger 时偶尔会遇到 `Date` 类型字段没设置示例值的话会出现 Swagger 提供了一个示例值，但格式并不是我们比较常用的 `yyyy-MM-dd HH:mm:ss` 的格式，这个的相关处理类在写这部分是暂时只在 `swagger-models-2.x.jar` 翻到 `io.swagger.v3.oas.models.media.DateTimeSchema`
+
+在需要的模块或公共模块的 `src/main/java` 目录下添加目录 `io.swagger.v3.oas.models.media` ，在该目录下将 `DateTimeSchema` 整个代码拷贝过来，并对 `cast` 方法与其他重写的方法进行调整，完整代码如下
 
 ```java
 package io.swagger.v3.oas.models.media;
@@ -556,124 +559,18 @@ import java.util.Date;
  */
 
 public class DateTimeSchema extends Schema<OffsetDateTime> {
-
-    public DateTimeSchema() {
-        super("string", "date-time");
-    }
-
     // ...
 
     @Override
-    protected OffsetDateTime cast(Object value) {
-        if (value != null) {
-            try {
-                if (value instanceof Date) {
-                    return ((Date) value).toInstant().atOffset(ZoneOffset.UTC);
-                } else if (value instanceof String) {
-                    return OffsetDateTime.parse((String) value);
-                } else if (value instanceof OffsetDateTime) {
-                    return (OffsetDateTime) value;
-                }
-            } catch (Exception ignored) {
-            }
+    public Object getExample() {
+        if (example == null) {
+            return DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
         }
-        return null;
-    }
-
-    // ...
-}
-```
-
-这个类通过泛型限制了返回值必须是 `OffsetDateTime` 类型，这个就没办法进行设置，所以不但要覆写还要修改泛型类型，方法同上。在需要的模块或公共模块的 `src/main/java` 目录下添加目录 `io.swagger.v3.oas.models.media` ，在该目录下将 `DateTimeSchema` 整个代码拷贝过来，并对 `cast` 方法与其他重写的方法进行调整，完整代码如下
-
-```java
-package io.swagger.v3.oas.models.media;
-
-import cn.hutool.core.date.DatePattern;
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.StrUtil;
-import lombok.extern.slf4j.Slf4j;
-
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-
-/**
- * DateTimeSchema
- */
-
-@Slf4j
-public class DateTimeSchema extends Schema<String> {
-
-    public DateTimeSchema() {
-        super("string", "date-time");
-    }
-
-    public DateTimeSchema type(String type) {
-        super.setType(type);
-        return this;
-    }
-
-    public DateTimeSchema format(String format) {
-        super.setFormat(format);
-        return this;
-    }
-
-    public DateTimeSchema _default(Date _default) {
-        super.setDefault(_default);
-        return this;
-    }
-
-    @Override
-    protected String cast(Object value) {
-        if (value != null) {
-            try {
-                if (value instanceof Date) {
-                    return DateUtil.format((Date) value, DatePattern.NORM_DATETIME_PATTERN);
-                } else if (value instanceof String) {
-                    if (StrUtil.isBlank((String) value)) {
-                        // 注解中的示例值如果为空白时直接拿当前时间
-                        return DateUtil.format(DateUtil.date(), DatePattern.NORM_DATETIME_PATTERN);
-                    }
-                    return (String) value; // 一般为注解中的示例值
-                }
-            } catch (Exception ignored) {
-            }
+        if (example == null) {
+            // 调用工具类给个时间就好字符串，这里我从文档注解中获取了format配合格式转换
+            return DateFormatUtils.format(new Date(), StringUtils.defaultString(getFormat(), "yyyy-MM-dd HH:mm:ss"));
         }
-        return null;
-    }
-
-    public DateTimeSchema _enum(List<String> _enum) {
-        super.setEnum(_enum);
-        return this;
-    }
-
-    public DateTimeSchema addEnumItem(String _enumItem) {
-        super.addEnumItemObject(_enumItem);
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        return super.equals(o);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode());
-    }
-
-    @Override
-    public String toString() {
-        return "class DateTimeSchema {\n" +
-                "    " + toIndentedString(super.toString()) + "\n" +
-                "}";
+        return example;
     }
 }
 ```
